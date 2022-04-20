@@ -9,7 +9,7 @@ import "../main.css";
 const HomePage = () => {
   return (
     <>
-      <div className="container">
+      <div className="homecontainer">
         <Navbar />
         <Hero />
         <Service />

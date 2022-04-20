@@ -77,7 +77,7 @@ p {
   padding: 3rem 0;
   background-color: #072a40;
 }
-.container {
+.homecontainer {
   margin: 0;
   padding: 0;
   /* position: relative; */
@@ -127,6 +127,7 @@ nav {
 .links a {
   font-size: 1rem;
   text-transform: capitalize;
+  text-decoration: none;
   letter-spacing: var(--spacing);
   display: block;
   padding: 0.5rem 1rem;
@@ -992,6 +993,7 @@ nav {
     position: absolute;
     top: 40%;
     /* left: 86%; */
+    text-decoration: none;
     font-size: 16px;
     font-family: "Open Sans", Gotham, gotham, Tahoma, Geneva, sans-serif;
   }
@@ -1011,6 +1013,7 @@ nav {
   .links a {
     color: #2a2a33;
     font-size: 16px;
+    text-decoration: none;
 
     font-family: "Open Sans", Gotham, gotham, Tahoma, Geneva, sans-serif;
     padding: 0;
@@ -1271,4 +1274,8 @@ nav {
   .logo {
     position: unset;
   }
+}
+
+.col {
+  margin: 10px 0px;
 }

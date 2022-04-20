@@ -51,7 +51,7 @@ const Navbar = () => {
               <span className="logo">HuskyEstate</span>
             </Link> */}
 
-            <Link to="/homes">
+            <Link to="/">
               <span className="logo">
                 <img src={logo} alt="logo" />
                 HuskyEstate
