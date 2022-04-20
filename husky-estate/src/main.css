@@ -1,0 +1,1274 @@
+:root {
+  /* dark shades of primary color*/
+  --clr-primary-1: hsl(205, 86%, 17%);
+  --clr-primary-2: hsl(205, 77%, 27%);
+  --clr-primary-3: hsl(205, 72%, 37%);
+  --clr-primary-4: hsl(205, 63%, 48%);
+  /* primary/main color */
+  --clr-primary-5: hsl(205, 78%, 60%);
+  /* lighter shades of primary color */
+  --clr-primary-6: hsl(205, 89%, 70%);
+  --clr-primary-7: hsl(205, 90%, 76%);
+  --clr-primary-8: hsl(205, 86%, 81%);
+  --clr-primary-9: hsl(205, 90%, 88%);
+  --clr-primary-10: hsl(205, 100%, 96%);
+  /* darkest grey - used for headings */
+  --clr-grey-1: hsl(209, 61%, 16%);
+  --clr-grey-2: hsl(211, 39%, 23%);
+  --clr-grey-3: hsl(209, 34%, 30%);
+  --clr-grey-4: hsl(209, 28%, 39%);
+  /* grey used for paragraphs */
+  --clr-grey-5: hsl(210, 22%, 49%);
+  --clr-grey-6: hsl(209, 23%, 60%);
+  --clr-grey-7: hsl(211, 27%, 70%);
+  --clr-grey-8: hsl(210, 31%, 80%);
+  --clr-grey-9: hsl(212, 33%, 89%);
+  --clr-grey-10: hsl(210, 36%, 96%);
+  --clr-white: #fff;
+  --clr-light: #f9f7f0;
+  --clr-primary: #18b7b3;
+  --clr-second: #178ca4;
+  --clr-dark: #072a40;
+  color: #fff;
+}
+
+*,
+::after,
+::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  /* overflow-x: hidden; */
+}
+
+body {
+  margin: 0;
+  /* font-family: "Ivan headlines", serif; */
+
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  color: var(--clr-grey-1);
+  line-height: 1.25;
+  background-color: #fff;
+}
+ul {
+  list-style-type: none;
+}
+a {
+  text-decoration: none;
+}
+h1,
+h2,
+h3,
+h4 {
+  letter-spacing: var(--spacing);
+  line-height: 2;
+  margin-bottom: 0.75rem;
+}
+p {
+  margin-bottom: 1.25rem;
+  color: var(--clr-grey-5);
+}
+/* Mobile version */
+.section {
+  width: min(90%, 70.5rem);
+  margin: 0 auto;
+  max-width: var(--max-width);
+  padding: 3rem 0;
+  background-color: #072a40;
+}
+.container {
+  margin: 0;
+  padding: 0;
+  /* position: relative; */
+}
+nav {
+  background: transparent;
+  box-shadow: var(--light-shadow);
+  position: relative;
+  z-index: 1;
+}
+.nav-header {
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem;
+  position: relative;
+}
+/* nav-toggle */
+.nav-toggle {
+  font-size: 1.5rem;
+  color: var(--clr-primary-5);
+  background: transparent;
+  border-color: transparent;
+  transition: var(--transition);
+  cursor: pointer;
+}
+.nav-toggle:hover {
+  color: var(--clr-primary-1);
+  transform: rotate(90deg);
+}
+.logo {
+  position: absolute;
+  left: 35%;
+  height: 25px;
+  width: 120px;
+  aspect-ratio: auto 120/ 25;
+}
+
+.links {
+  font-size: 15px;
+  color: #fff;
+  cursor: pointer;
+  font-weight: 500;
+  /* display: none; */
+}
+.links a {
+  font-size: 1rem;
+  text-transform: capitalize;
+  letter-spacing: var(--spacing);
+  display: block;
+  padding: 0.5rem 1rem;
+  transition: var(--transition);
+}
+.links a:hover {
+  background: var(--clr-primary-8);
+  color: var(--clr-primary-5);
+  padding-left: 1.5rem;
+}
+.social-icons {
+  display: none;
+}
+.links-container {
+  height: 0;
+  overflow: hidden;
+  transition: var(--transition);
+  width: 100%;
+  text-align: left;
+  opacity: 0.9;
+  display: none;
+}
+.show-container {
+  background-color: #fff;
+  height: 20rem;
+}
+.links-page {
+  background-color: white;
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  overflow-y: hidden;
+}
+.links-nav {
+  padding: 0.8rem;
+}
+.mobile-links-logo {
+  position: absolute;
+  top: 2%;
+  left: 35%;
+}
+.mobile-link-container {
+  position: relative;
+  border-bottom: 0.5px solid;
+  border-color: rgb(204, 203, 203);
+  border-width: thin;
+}
+.mobile-link {
+  display: flex;
+  width: 85%;
+  text-decoration: none;
+  padding: 1rem;
+  font-family: inherit;
+  font-size: 15px;
+}
+.mobile-link a {
+  color: rgb(42, 42, 51);
+  line-height: 28px;
+  cursor: pointer;
+  font-weight: 400;
+  font-family: "Open Sans", Tahoma, Geneva, sans-serif;
+}
+.mobile-link-arrow {
+  width: 10%;
+  position: absolute;
+  padding-block: 1rem;
+  left: 90%;
+  color: blue;
+  font-size: 1.3rem;
+}
+.hero {
+  width: min(100%, 70.5rem);
+  height: 440px;
+  background-image: url("https://www.zillowstatic.com/s3/homepage/static/_Mobile_Overlay_ChangeStartsHere_HC@2x.webp");
+  background-repeat: no-repeat;
+  background-size: cover;
+  align-items: center;
+  position: absolute;
+  top: 0%;
+  overflow: hidden;
+}
+.center-content {
+  color: #fff;
+  width: 85%;
+  max-width: 1200px;
+  display: block;
+  margin-left: 2rem;
+  margin-right: 2rem;
+  position: absolute;
+  top: 29%;
+}
+.center-content h3 {
+  text-align: center;
+  font-size: 26px;
+  margin-bottom: 0.5rem;
+}
+.search-1 {
+  width: 100%;
+  height: 4.25rem;
+  display: flex;
+  background-color: #f6f6fa;
+  align-items: center;
+  justify-content: center;
+  background-color: white;
+  position: fixed;
+  z-index: 5;
+  top: 0;
+  left: 0;
+  padding: 0.8rem;
+  border-bottom: 1px grey;
+}
+.search-1 input {
+  border: 0.5px solid;
+  width: 1100%;
+  height: 2.5rem;
+  padding: 18px 9px 18px 9px;
+  margin: 12px auto;
+  background-color: #f6f6fa;
+}
+.search-1 .icon {
+  font-size: 1.5rem;
+  color: #006aff;
+  position: absolute;
+  left: 85%;
+}
+.search-2 {
+  width: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: white;
+  border-radius: 0.3rem;
+  position: relative;
+}
+
+.search-box {
+  width: 80%;
+  max-width: 100%;
+  height: 3.5rem;
+  border-radius: 0.3rem;
+  box-shadow: transparent;
+  padding: 1rem;
+  font-size: 0.7rem;
+  font-weight: bold;
+  border: 0;
+  border-right: 1px solid;
+  border-radius: -2rem;
+}
+.search-icon {
+  font-size: 26px;
+  color: #54545a;
+  height: 3rem;
+  width: 20%;
+  align-items: center;
+  justify-content: center;
+}
+.icon {
+  font-size: 26px;
+  color: #54545a;
+  height: 3rem;
+  position: absolute;
+  left: 87%;
+}
+.services {
+  position: relative;
+  position: absolute;
+  top: 65%;
+  padding: 4.5rem 0;
+}
+
+.services-h3 {
+  color: #2a2a33;
+  text-align: center;
+  line-height: 1.5rem;
+  padding: 0 2rem;
+  margin-bottom: 2rem;
+  position: absolute;
+  top: 60%;
+}
+.service-card {
+  background: white;
+  padding: 1.5rem;
+  width: 100%;
+  height: 28.813rem;
+  display: block;
+  margin-bottom: 1.5rem;
+  align-items: center;
+  justify-content: center;
+  -webkit-box-shadow: 0px 3px 3px rgb(109, 109, 109);
+  -moz-box-shadow: 0px 3px 3px rgb(109, 109, 109);
+  box-shadow: 0px 3px 3px rgb(109, 109, 109);
+}
+.service-card img {
+  max-width: 100%;
+}
+.card-content > p {
+  color: rgb(42, 42, 51);
+  text-align: center;
+  font-weight: 400;
+  font-family: "Open Sans", Tahoma, Geneva, sans-serif;
+  margin-top: 1rem;
+  line-height: 1.5rem;
+}
+.card-content {
+  width: 100%;
+  margin-top: 1rem;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+.card-title {
+  text-align: center;
+  font-weight: 700 !important;
+  font-size: 1.5rem !important;
+}
+.action-btn {
+  cursor: pointer;
+  padding: 0.563rem 1rem;
+  background-color: white;
+  border: 0.063rem solid;
+  border-color: rgb(0, 106, 255);
+  border-radius: 0.25rem;
+  color: rgb(0, 106, 255);
+  align-self: center;
+  justify-self: center;
+  font-weight: 600;
+  margin: 2rem 0 2rem 0;
+  text-align: center;
+  font-size: 1rem;
+  font-family: "Open Sans", Tahoma, Geneva, sans-serif;
+  line-height: 1.5rem;
+  transition-property: background-color, border-color, color;
+  position: absolute;
+  left: 27%;
+  top: 100%;
+}
+.action-btn:hover {
+  background-color: rgb(0, 106, 255);
+  color: white;
+}
+.footer {
+  margin-top: 0;
+  padding: 0 1.2rem;
+  background-color: white;
+  color: #2a2a33;
+  font-family: "Open Sans", Tahoma, Geneva, sans-serif;
+  /* height: 45rem; */
+  line-height: 1.5rem;
+  width: 100%;
+  position: absolute;
+  bottom: -200%;
+  border-bottom: 2px grey;
+}
+.footer-item {
+  color: #2a2a33;
+  position: relative;
+  display: flex;
+  font-size: 1rem;
+  list-style: 24px;
+  font-family: "Open Sans", Tahoma, Geneva, sans-serif;
+  text-align: left;
+  padding: 1rem 4.2rem 1rem 1rem;
+}
+
+.footerLinks {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  border-left: 1px;
+}
+.arrow {
+  color: #0d4599;
+  position: absolute;
+  left: 80%;
+  top: 30%;
+  font-size: 1.5rem;
+}
+.bar {
+  color: #747474;
+  transform: rotate(232deg);
+  font-size: 1.5rem;
+  position: absolute;
+  left: 95%;
+}
+.footer-essays {
+  border-top: 1px solid grey;
+  padding: 1.5rem 0;
+  margin: auto;
+  text-align: center;
+  /* height: 36rem; */
+}
+.first-message {
+  font-size: 0.57rem;
+  text-align: center;
+  line-height: 1rem !important;
+  color: #54545a;
+  font-family: "Open Sans", "Adjusted Arial", Tahoma, Geneva, sans-serif !important;
+  font-weight: 400;
+  margin: 0;
+}
+.second-message-container {
+  margin: 0 1.5rem 1rem;
+}
+.second-message {
+  font-size: 0.57rem;
+  line-height: 1rem !important;
+  font-family: "Open Sans", "Adjusted Arial", Tahoma, Geneva, sans-serif !important;
+  color: #54545a;
+  font-weight: 400;
+  margin: 0;
+}
+.contact-link {
+  font-family: "Open Sans", "Adjusted Arial", Tahoma, Geneva, sans-serif !important;
+  font-size: 0.9rem;
+  color: #0d4599;
+  text-decoration: underline;
+}
+.third-message {
+  font-size: 0.57rem;
+  text-align: center;
+  line-height: 1rem !important;
+  color: #54545a;
+  font-family: "Open Sans", "Adjusted Arial", Tahoma, Geneva, sans-serif !important;
+  font-weight: 400;
+  margin-top: 1rem;
+}
+.socialMedia {
+  color: #006aff;
+  font-size: 1.7rem;
+  height: 1rem;
+}
+.social-area i {
+  font-size: 0.7rem;
+  margin-top: 1rem;
+}
+.social-area {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.search-nav {
+  background-color: #fff;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  height: 60px;
+  padding: 0 10px;
+  border-bottom: 1px solid #7f7f80;
+}
+.search-box-homes {
+  background-color: #fff;
+  width: 60%;
+  max-width: 70%;
+  border-radius: 0.2em;
+  box-shadow: transparent;
+  padding: 0.3rem 0.5rem;
+  font-size: 1rem;
+  color: rgb(68, 68, 68);
+  border: 0;
+  border: 1px solid rgb(167, 166, 171);
+  border-radius: -2rem;
+}
+.variables-nav {
+  background-color: #fff;
+  display: flex;
+  padding-top: 0.7rem;
+  align-items: center;
+  justify-content: center;
+}
+.rent-sale-btn {
+  color: #006aff;
+  padding-inline: 0.6rem;
+  margin-inline: 0.2rem;
+  height: 30px;
+  min-width: 44px;
+  border: 0.05rem solid #006aff;
+  border-radius: 0.1rem;
+  background-color: transparent;
+}
+.homes {
+  font-family: "Open Sans", Tahoma, Geneva, sans-serif !important;
+  background-color: #fff;
+  position: relative;
+  display: block;
+  height: 812px;
+}
+.home-title {
+  font-weight: inherit;
+  position: absolute;
+  top: 2.5%;
+  width: 100%;
+  padding: 0 12px;
+}
+.home-title > h4 {
+  font-size: 20px;
+  line-height: 26px;
+  font-weight: 600;
+}
+.randoms {
+  position: relative;
+  display: flex;
+  padding-inline: 0.5rem;
+  margin: 0 0.5rem 2rem 0.5rem;
+  font-weight: lighter;
+}
+.one {
+  position: absolute;
+  left: 0%;
+  justify-content: start;
+}
+.two {
+  position: absolute;
+  left: 60%;
+  justify-content: end;
+}
+.home-cards {
+  /* margin-top: 1rem; */
+  position: relative;
+  display: flexbox;
+  top: 10%;
+}
+.home-card {
+  background-color: #fff;
+  position: relative;
+  display: flex;
+  margin: 0 0 8px;
+  width: 375px;
+  height: 310px;
+  top: 20%;
+}
+.home-img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  position: absolute;
+  left: 0%;
+  top: -1%;
+}
+.card-info {
+  height: 95px;
+  padding: 1rem;
+  background-color: #fff;
+  width: 375px;
+  position: absolute;
+  top: 65%;
+  border-bottom: 4px solid #006aff;
+}
+.card-info > h4 {
+  font-weight: 600;
+  font-size: 20px;
+  height: 20px;
+  line-height: 22px;
+}
+.utilities {
+  margin: 0;
+  font-size: 14px;
+  font-weight: 300;
+  line-height: 16px;
+  text-align: left;
+  margin-bottom: 0.5rem;
+}
+.location {
+  font-size: 12px;
+  font-weight: 300;
+  line-height: 14px;
+}
+/* Tablet version */
+@media only screen and (min-width: 768px) {
+  .logo img {
+    align-self: center;
+    justify-self: center;
+    position: absolute;
+    left: -30%;
+  }
+  .links-page {
+    background-color: white;
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    overflow-y: hidden;
+  }
+  .links-nav {
+    padding: 0.8rem;
+  }
+  .mobile-links-logo {
+    position: absolute;
+    top: 2%;
+    left: 35%;
+  }
+  .mobile-link-container {
+    position: relative;
+    border-bottom: 0.5px solid;
+    border-color: rgb(204, 203, 203);
+    border-width: thin;
+  }
+  .mobile-link {
+    display: flex;
+    width: 85%;
+    text-decoration: none;
+    padding: 1rem;
+    font-family: inherit;
+    font-size: 15px;
+  }
+  .mobile-link a {
+    color: rgb(42, 42, 51);
+    line-height: 28px;
+    cursor: pointer;
+    font-weight: 400;
+    font-family: "Open Sans", Tahoma, Geneva, sans-serif;
+  }
+  .mobile-link-arrow {
+    width: 10%;
+    position: absolute;
+    padding-block: 1rem;
+    left: 95%;
+    color: blue;
+    font-size: 1.3rem;
+  }
+  .hero {
+    width: min(100%, 70.5rem);
+    background-image: url("https://www.zillowstatic.com/s3/homepage/static/_Desktop_Overlay_ChangeStartsHere_HC.webp");
+    background-repeat: no-repeat;
+    background-position-x: center;
+    background-size: cover;
+    align-items: center;
+    position: absolute;
+    top: 0%;
+    overflow: hidden;
+  }
+  .center-content h3 {
+    max-width: 100%;
+    text-align: center;
+    font-size: 2.25rem;
+  }
+
+  .search-box {
+    width: 100%;
+    max-width: 100%;
+    height: 4rem;
+    border-radius: 0.3rem;
+    box-shadow: transparent;
+    padding: 1rem;
+    font-size: 1rem;
+    font-weight: bold;
+    border: 0;
+    border-right: 1px solid;
+    border-radius: -2rem;
+  }
+  .search-1 {
+    border-bottom: 1px grey;
+  }
+  .search-1 .icon {
+    font-size: 1.5rem;
+    color: #006aff;
+    position: absolute;
+    left: 92%;
+  }
+  .center-content {
+    color: #fff;
+    width: 88%;
+    max-width: 1200px;
+    display: block;
+    margin-left: 2rem;
+    margin-right: 2rem;
+    position: absolute;
+    top: 27%;
+    left: 3%;
+  }
+  .icon {
+    font-size: 30px;
+    color: #54545a;
+    height: 3rem;
+    position: absolute;
+    left: 91%;
+  }
+  .services {
+    position: absolute;
+    top: 65%;
+    padding: 0;
+    vertical-align: middle;
+    margin-top: 2rem;
+    margin: 1.5rem;
+  }
+  .services-h3 {
+    font-size: 21px;
+    color: #2a2a33;
+    text-align: center;
+    line-height: 1.23;
+    padding: 0 1.25rem;
+    margin: 2rem 11rem 3rem 11rem;
+    border: 0;
+    position: absolute;
+    top: 50%;
+  }
+  .service-card {
+    background: white;
+    padding: 1rem 2rem 4rem 2rem;
+    width: 100%;
+    height: 100%;
+    display: block;
+    margin-bottom: 1.5rem;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    flex-flow: row;
+    flex-basis: 700px;
+  }
+  .service-card img {
+    width: 50%;
+    height: 50%;
+    flex-basis: 220px;
+    display: flex;
+    -webkit-box-flex: 2;
+    flex-grow: 2;
+  }
+  .card-content {
+    width: 100%;
+    height: 140%;
+    margin: 0;
+    align-items: left;
+    justify-content: left;
+    -webkit-box-flex: 2;
+    flex: 2 0 227px;
+  }
+  .card-title {
+    text-align: left;
+    font-weight: 700 !important;
+    font-size: 24px;
+    line-height: 32px;
+  }
+  .card-content > p {
+    color: rgb(42, 42, 51);
+    text-align: left;
+    font-weight: 400;
+    font-family: "Open Sans", Tahoma, Geneva, sans-serif;
+    margin-top: 0.5rem;
+    line-height: 24px;
+  }
+  .action-btn {
+    cursor: pointer;
+    padding: 0.563rem 1rem;
+    background-color: white;
+    border: 0.063rem solid;
+    border-color: rgb(0, 106, 255);
+    border-radius: 0.25rem;
+    color: rgb(0, 106, 255);
+    align-self: left;
+    justify-self: left;
+    font-weight: 600;
+    margin: 0.5rem 0 1rem 0;
+    text-align: center;
+    font-size: 1rem;
+    font-family: "Open Sans", Tahoma, Geneva, sans-serif;
+    line-height: 1.5rem;
+    transition-property: background-color, border-color, color;
+    position: absolute;
+    left: 0%;
+    top: 100%;
+  }
+  .action-btn:hover {
+    background-color: rgb(0, 106, 255);
+    color: white;
+  }
+  .footer {
+    margin-top: 0;
+    padding: 0 1.5rem;
+    background-color: white;
+    color: #2a2a33;
+    font-family: "Open Sans", Tahoma, Geneva, sans-serif;
+    /* height: 42rem; */
+    line-height: 1.5rem;
+    width: 100%;
+    position: absolute;
+    bottom: -135%;
+  }
+  /* HomesForSale/Rent pages */
+  .search-nav {
+    background-color: #fff;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    height: 60px;
+    padding: 0 10px;
+    border-bottom: 1px solid #7f7f80;
+  }
+  .search-box-homes {
+    background-color: #fff;
+    width: 100%;
+    max-width: 80%;
+    border-radius: 0.2em;
+    box-shadow: transparent;
+    padding: 0.3rem 0.5rem;
+    font-size: 1rem;
+    color: rgb(68, 68, 68);
+    border: 0;
+    border: 1px solid rgb(167, 166, 171);
+    border-radius: -2rem;
+  }
+  .variables-nav {
+    background-color: #fff;
+    display: flex;
+    padding: 0.7rem;
+    align-items: left;
+    justify-content: left;
+  }
+  .rent-sale-btn {
+    color: #006aff;
+    padding-inline: 0.6rem;
+    margin-inline: 0.2rem;
+    height: 30px;
+    width: 7rem !important;
+    min-width: 44px;
+    border: 0.05rem solid #006aff;
+    border-radius: 0.1rem;
+    background-color: transparent;
+  }
+  .homes {
+    font-family: "Open Sans", "Adjusted Arial", Tahoma, Geneva, sans-serif !important;
+    background-color: #fff;
+    position: relative;
+    display: block;
+    height: 812px;
+  }
+  .home-title {
+    position: absolute;
+    width: 100%;
+    padding: 10px 12px;
+  }
+  .home-title > h4 {
+    font-size: 20px;
+    line-height: 26px;
+    font-weight: 600;
+    margin: 0.5rem;
+  }
+  .randoms {
+    position: relative;
+    display: flex;
+    padding-inline: 0.5rem;
+    margin: 0 0.5rem 2rem 0.5rem;
+    font-weight: lighter;
+  }
+  .one {
+    position: absolute;
+    left: 0%;
+    justify-content: start;
+  }
+  .two {
+    position: absolute;
+    left: 60%;
+    justify-content: end;
+  }
+  .home-cards {
+    display: flex;
+    position: absolute;
+    top: 10%;
+    width: 100%;
+    height: 100%;
+    padding: 1rem;
+  }
+  .home-card {
+    background-color: #fff;
+    position: absolute;
+    left: 0%;
+    margin: 0 0 8px;
+    width: 375px;
+    height: 281px;
+    top: 0%;
+    padding: 0.5rem;
+  }
+  .home-img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    position: absolute;
+    left: 0%;
+    padding: 0.5rem;
+  }
+  .card-info {
+    height: 86px;
+    padding: 10px;
+    background-color: #fff;
+    width: 375px;
+    position: absolute;
+    top: 70%;
+    border-bottom: 4px solid #006aff;
+  }
+  .card-info > h4 {
+    font-weight: 600;
+    font-size: 20px;
+    height: 20px;
+    line-height: 22px;
+  }
+  .utilities {
+    margin: 0;
+    font-size: 14px;
+    font-weight: 300;
+    line-height: 16px;
+    text-align: left;
+    margin-bottom: 0.5rem;
+  }
+  .location {
+    font-size: 12px;
+    font-weight: 300;
+    line-height: 14px;
+  }
+}
+/* Desktop view */
+@media only screen and (min-width: 1000px) {
+  .logo img {
+    /* content: url("https://s.zillowstatic.com/pfs/static/z-logo-default.svg"); */
+    align-self: center;
+    justify-self: center;
+    position: absolute;
+    left: -30%;
+    height: 35px;
+  }
+  .logo {
+    position: absolute;
+    left: 40%;
+    top: 35%;
+  }
+  nav {
+    box-shadow: var(--light-shadow);
+    background-color: #fff;
+    position: relative;
+    height: 5rem;
+    width: 100%;
+  }
+  .nav-center {
+    height: 100%;
+  }
+  .nav-toggle {
+    display: none;
+  }
+  .nav-header {
+    height: 100%;
+    width: 100%;
+    max-width: 100%;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem 2rem 1rem 2rem;
+    position: relative;
+  }
+  .links-container {
+    height: auto !important;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+    color: #2a2a33;
+  }
+  .links {
+    display: flex;
+    flex-direction: row;
+  }
+  span .links {
+    color: #2a2a33;
+    position: absolute;
+    top: 40%;
+    /* left: 86%; */
+    font-size: 16px;
+    font-family: "Open Sans", Gotham, gotham, Tahoma, Geneva, sans-serif;
+  }
+  span .links.signUp {
+    left: 81%;
+  }
+  span .links.logIn {
+    left: 86%;
+  }
+  span .links:hover {
+    background: var(--clr-primary-8);
+    color: var(--clr-primary-5);
+    padding-left: 1.5rem;
+    padding: 0;
+    background: transparent;
+  }
+  .links a {
+    color: #2a2a33;
+    font-size: 16px;
+
+    font-family: "Open Sans", Gotham, gotham, Tahoma, Geneva, sans-serif;
+    padding: 0;
+    margin: 0 1rem;
+  }
+  .links a:hover {
+    padding: 0;
+    background: transparent;
+  }
+  .first-set {
+    position: absolute;
+    top: 40%;
+    left: 8%;
+    color: #2a2a33;
+  }
+  .second-set {
+    position: absolute;
+    top: 40%;
+
+    left: 65%;
+    color: #2a2a33;
+  }
+  .hero {
+    width: 100%;
+    /* max(100%, 1165px); */
+    background-image: url("https://www.zillowstatic.com/s3/homepage/static/_Desktop_Overlay_ChangeStartsHere_HC@2x.webp");
+    background-repeat: no-repeat;
+    background-position-y: center;
+    background-position-x: center;
+    background-size: cover;
+    align-items: center;
+    position: absolute;
+    top: 10%;
+    overflow: hidden;
+  }
+  .center-content {
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    width: 700px;
+    max-width: 1200px;
+    display: block;
+    margin-left: 2rem;
+    margin-right: 2rem;
+    position: absolute;
+    top: 20%;
+    left: 15%;
+  }
+  .center-content h3 {
+    max-width: 100%;
+    text-align: center;
+    font-size: 2.25rem;
+  }
+  .card-title-1 {
+    width: 100%;
+    height: 15%;
+    max-width: 1280px;
+    text-align: center;
+    justify-content: center;
+    font-weight: 700 !important;
+    font-size: 1.5rem !important;
+    position: absolute;
+    top: 65%;
+  }
+  .search-1 {
+    width: 100%;
+    height: 4.25rem;
+    display: flex;
+    background-color: #f6f6fa;
+    align-items: center;
+    justify-content: center;
+    background-color: white;
+    position: fixed;
+    z-index: 5;
+    top: 0;
+    left: 0;
+    padding: 0.8rem;
+    border-bottom: 1px grey;
+  }
+  .search-1 input {
+    border: 0.5px solid;
+    width: 40%;
+    height: 2.5rem;
+    padding: 18px 9px 18px 9px;
+    margin: 12px auto;
+    background-color: #f6f6fa;
+    position: absolute;
+    left: 30%;
+  }
+  .search-1 .icon {
+    font-size: 1.5rem;
+    color: #006aff;
+    position: absolute;
+    left: 67%;
+  }
+  .services-h3 {
+    color: #2a2a33;
+    text-align: center;
+    justify-content: center;
+    line-height: 1.5rem;
+    padding: 0 9rem;
+    margin-bottom: 2rem;
+    position: absolute;
+    top: 80%;
+    left: 19%;
+  }
+  .services {
+    position: absolute;
+    top: 80%;
+    padding: 4.5rem 4rem;
+    display: flex;
+    column-gap: 2rem;
+  }
+  .service-card {
+    background: white;
+    padding: 24px;
+    width: 100%;
+    height: 29rem;
+    margin-bottom: 1.5rem;
+    display: block;
+    z-index: 0;
+  }
+  .service-card:hover {
+    width: 110%;
+    height: 30rem;
+    transform: scale(1.04, 1.04);
+    transition: all 500ms ease;
+    -webkit-transition: all 500ms ease;
+    -moz-box-shadow: 0 0 10px gray;
+    -webkit-box-shadow: 0 0 10px gray;
+    box-shadow: 0 0 10px gray;
+  }
+  .service-card img {
+    width: 100%;
+    height: 50%;
+    flex-basis: 220px;
+    display: flex;
+    -webkit-box-flex: 2;
+    flex-grow: 2;
+  }
+  .card-title {
+    text-align: center;
+    font-weight: 700 !important;
+    font-size: 24px;
+    line-height: 32px;
+  }
+  .center-content {
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    width: 700px;
+    max-width: 1200px;
+    display: block;
+    margin-left: 2rem;
+    margin-right: 2rem;
+    position: absolute;
+    top: 20%;
+    left: 23%;
+  }
+  .card-content {
+    width: 100%;
+    height: 50%;
+    margin: 0;
+    align-items: left;
+    justify-content: left;
+    -webkit-box-flex: 2;
+    flex: 2 0 227px;
+  }
+  .card-content > p {
+    color: rgb(42, 42, 51);
+    text-align: center;
+    font-weight: 400;
+    font-family: "Open Sans", Tahoma, Geneva, sans-serif;
+    margin-top: 1rem;
+    line-height: 1.5rem;
+    padding-inline: 0.5rem;
+  }
+  .action-btn {
+    cursor: pointer;
+    padding: 0.563rem 1rem;
+    background-color: white;
+    border: 0.063rem solid;
+    border-color: rgb(0, 106, 255);
+    border-radius: 0.25rem;
+    color: rgb(0, 106, 255);
+    align-self: left;
+    justify-self: left;
+    font-weight: 600;
+    margin: 0.5rem 0 1rem 0;
+    text-align: center;
+    font-size: 1rem;
+    font-family: "Open Sans", Tahoma, Geneva, sans-serif;
+    line-height: 1.5rem;
+    transition-property: background-color, border-color, color;
+    position: absolute;
+    left: 28%;
+    top: 78%;
+  }
+  .footer {
+    margin-top: 0;
+    padding: 0 1.5rem;
+    background-color: white;
+    color: #2a2a33;
+    font-family: "Open Sans", Tahoma, Geneva, sans-serif;
+    /* height: 42rem; */
+    line-height: 1.5rem;
+    width: 100%;
+    position: absolute;
+    bottom: -150%;
+  }
+  .footerLinks {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    border-left: 1px;
+    padding: 2rem 12rem 2rem 12rem;
+  }
+  .footer-item {
+    color: #2a2a33;
+    position: relative;
+    display: flex;
+    font-size: 1.2rem;
+    list-style: 24px;
+    font-family: "Open Sans", Tahoma, Geneva, sans-serif;
+    text-align: left;
+    padding: 1rem 4.2rem 1rem 1rem;
+  }
+  .footer-essays {
+    border-top: 1px solid grey;
+    padding: 1.5rem 25rem;
+    margin: auto;
+    text-align: center;
+    /* height: 36rem; */
+  }
+  .action-btn:hover {
+    background-color: rgb(24 85 232 / 90%);
+    color: white;
+  }
+}
+
+/* New styles */
+.logo {
+  font-size: xx-large;
+  top: 30%;
+  font-weight: bold;
+  color: rgb(24 85 232 / 90%);
+}
+
+@media screen and (max-width: 999px) {
+  .logo {
+    color: white;
+  }
+  .logo img {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 550px) {
+  .logo {
+    position: unset;
+  }
+}
