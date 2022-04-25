@@ -1,6 +1,6 @@
 import React from "react";
 import { FaWarehouse } from "react-icons/fa";
-import { SocialMediaLinks } from "../data";
+import { SocialMediaLinks } from "../../data";
 
 const FooterInfo = () => {
   return (
