@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { FaBars } from "react-icons/fa";
 import { FaCircle } from "react-icons/fa";
 import FooterInfo from "../Components/FooterInfo";
-import { HomesForRent } from "../data";
+import { HomesForRent } from "../../data";
 import { Link } from "react-router-dom";
 
 const HomesDisplay = () => {

@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { FaBars } from "react-icons/fa";
-import { Links } from "../data";
-import "../main.css";
-import ShowLinks from "./ShowLinks";
-import logo from "./../assets/logo.png";
+import { Links } from "../../data";
+import "../../main.css";
+import ShowLinks from "../ShowLinks";
+import logo from "../../assets/logo.png";
 
 const Navbar = () => {
   const [showLinks, setShowLinks] = useState(false);

@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { Links } from "../data";
+import { Links } from "../../data";
 import { FiX } from "react-icons/fi";
 
 const ShowLinks = ({ onClose }) => {
