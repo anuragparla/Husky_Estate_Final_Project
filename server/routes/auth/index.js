@@ -5,17 +5,17 @@ var bodyParser = require('body-parser');
 
 router.use(bodyParser.urlencoded({ extended: false }));
 router.use(bodyParser.json());
-var User = require('../models/User');
+var User = require('../../models/User');
 
-const {emailAndPasswordValid, verifyToken} = require('../util/validator');
+const {emailAndPasswordValid, verifyToken} = require('../../util/validator');
 
 /**
  * Configure JWT
  */
 var jwt = require('jsonwebtoken'); // used to create, sign, and verify tokens
 var bcrypt = require('bcryptjs');
-var config = require('../config'); // get config file
-const { USER_TYPES } = require('../util/constants');
+var config = require('../../config'); // get config file
+const { USER_TYPES } = require('../../util/constants');
 
 router.post('/login', emailAndPasswordValid ,function(req, res) {
 
@@ -36,7 +36,7 @@ router.post('/login', emailAndPasswordValid ,function(req, res) {
     // return the information including token as JSON
     res.status(200).send({ auth: true, token: token });
   });
-
+  
 });
 
 router.get('/logout', function(req, res) {
@@ -45,8 +45,8 @@ router.get('/logout', function(req, res) {
 
 router.post('/register', emailAndPasswordValid ,function(req, res) {
 
-  var hashedPassword = bcrypt.hashSync(req.body.password, 8);
 
+  var hashedPassword = bcrypt.hashSync(req.body.password, 8);
   User.create({
     name : req.body.name,
     email : req.body.email,
