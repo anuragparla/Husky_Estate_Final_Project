@@ -36,6 +36,7 @@ export const Services = [
     title: " Buy a home",
     text: "Find your place with an immersive photo experience and the most listings, including things you won’t find anywhere else.",
     action: "Search homes",
+    to:"/buy"
   },
   {
     id: 11,
@@ -43,6 +44,7 @@ export const Services = [
     title: " Rent a home",
     text: "We’re creating a seamless online experience – from shopping on the largest rental network, to applying, to paying rent.",
     action: "Find rentals",
+    to:"/rent"
   },
 ];
 

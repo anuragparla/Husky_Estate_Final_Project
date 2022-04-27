@@ -20,7 +20,7 @@ router.post("/new", onlyAdmin,verifyPropertyDetails, (req,res) => {
 
     Property.create(property, 
       function (err, user) {
-        if (err) {return res.status(500).send("There was a problem registering the prooperty`.");}
+        if (err) {return res.status(500).send({success:false, message:"There was a problem finding the Property."});}
         res.status(200).end();
       });
 
@@ -30,9 +30,12 @@ router.post("/new", onlyAdmin,verifyPropertyDetails, (req,res) => {
 router.get("/get/:id",  (req,res) => {
 
   Property.findById(req.params.id, function (err, user) {
-    if (err) return res.status(500).send("There was a problem finding the Property.");
-    if (!user) return res.status(404).send("No Property found.");
-    res.status(200).send(user);
+    if (err) return res.status(500).send({success:false, message:"There was a problem finding the Property."});
+    if (!user) return res.status(404).send({success:false, message:"No Property Found"});
+    res.status(200).send({
+      success:true,
+      data: user
+    });
   });
 
 });
@@ -41,7 +44,11 @@ router.get("/get/:id",  (req,res) => {
 router.get("/buy",  (req,res) => {
   Property.find({isForSale:true}, function(err, properties) {
     if (err) return res.status(500).send(err+"");
-    res.send(properties);
+    res.send({
+      success: true,
+      data: properties
+    });
+
   });  
 });
 
@@ -49,8 +56,12 @@ router.get("/buy",  (req,res) => {
 router.get("/rent",  (req,res) => {
 
   Property.find({isForSale:false}, function(err, properties) {
-    if (err) return res.status(500).send("There was a problem finding the Property.");
-    res.send(properties);
+    if (err) return res.status(500).send({success:false, message:"There was a problem finding the Property."});
+    res.send({
+      success: true,
+      data: properties
+    });
+
   });
   
 });
@@ -65,7 +76,7 @@ router.get("/search/:q",  async (req,res) => {
 
   let json = await getLatLng(req.params.q);
   if(json.length === 0) {
-    res.status(200).send([]);
+    res.status(200).send({success: true, data:[]});
     return;
   }
 
@@ -73,16 +84,19 @@ router.get("/search/:q",  async (req,res) => {
 
   Property.find({}, function(err, properties) {
 
-    if (err) {console.log(err);return res.status(500).send("There was a problem finding the Property.");}
+    if (err) {console.log(err);return res.status(500).send({success:false, message:"There was a problem finding the Property."});}
     let filtered = [];
     for ( let property of properties) {
       let distance = getDistanceFromLatLonInKm(property.lat, property.lng, location.lat, location.lng);
-      if(distance <= 3) {
-        filtered.add(property);
+      if(distance <= 20) {
+        filtered.push(property);
       }
     }
 
-    res.send(filtered);
+    res.send({
+      success: true,
+      data: filtered
+    });
   });
 
   
