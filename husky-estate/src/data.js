@@ -27,6 +27,12 @@ export const Links = [
     url: "/homesForRent",
     linkSymbol: <FiChevronDown />,
   },
+  {
+    id: 3,
+    nav: "Admin",
+    url: "/admin",
+    linkSymbol: <FiChevronDown />,
+  }
 ];
 
 export const Services = [

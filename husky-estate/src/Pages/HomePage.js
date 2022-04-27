@@ -14,6 +14,7 @@ const HomePage = () => {
         <Hero />
         <Service />
         <Footer />
+        
       </div>
     </>
   );
