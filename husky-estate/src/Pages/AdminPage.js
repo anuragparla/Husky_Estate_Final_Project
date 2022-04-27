@@ -6,13 +6,17 @@ import Navbar from "../Components/Navbar";
 import img1 from "../assets/home1.jpeg"
 import "../main.css";
 
-const AdminPage = () => {
+const AdminPage = () => { const [availability, setAvailability] = React.useState('Yes');
+const handleChange = (event) => {
+    setAvailability(event.target.value)
+  }
     return (
         <>
             <Navbar />
             <br></br>
-            <div>
-                <div class="grid grid-cols-2 gap-3">
+            <div className="container">
+                {/* <div class="grid grid-cols-2 gap-3"> */}
+                <div className="columns-2">
                     <div><br></br><img src={img1} alt="BigCo Inc. logo" /></div>
                     <div>
                         <form action="">
@@ -75,20 +79,25 @@ const AdminPage = () => {
 
                             <div className="flex flex-col justify-center items-center">
                                 <label htmlFor="propertysale">Property For Sale</label>
-
-                                <div className="radio">
-                                    <label>
-                                        <input type="radio" value="yes" checked={true} />
-                                        Yes
-                                    </label> &nbsp;
-                                    <label>
-                                        <input type="radio" value="no" />
-                                        No
-                                    </label>
-                                </div>
-                                <div className="radio">
-                                    
-                                </div>
+                                <div>
+        <input
+          type="radio"
+          value="Yes"
+          checked={availability === 'Yes'}
+          onChange={handleChange}
+        /> Yes
+      </div>
+      <div>
+        <input
+          type="radio"
+          value="No"
+          checked={availability === 'No'}
+          onChange={handleChange}
+        /> No
+      </div>
+                            </div>
+                            <div className="flex items-center justify-center">
+                                <button type="submit" className="bg-blue-500 rounded-medium w-16">Submit</button>
                             </div>
                         </form>
                     </div>
