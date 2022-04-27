@@ -39,6 +39,18 @@ const Navbar = () => {
                   })}
                 </ul>
               </div>
+              <div className="second-set">
+                <ul className="links">
+                  {Links.slice(9, 12).map((link) => {
+                    const { id, nav, url } = link;
+                    return (
+                      <li key={id}>
+                        <Link to={url}>{nav}</Link>
+                      </li>
+                    );
+                  })}
+                </ul>
+              </div>
             </div>
             <button className="nav-toggle">
               <FaBars
