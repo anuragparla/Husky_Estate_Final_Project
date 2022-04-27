@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { Services } from "../../data";
-import "../../main.css";
 import ServiceCard from "../ServiceCard";
 
 const Service = () => {

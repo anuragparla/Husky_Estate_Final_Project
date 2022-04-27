@@ -5,27 +5,27 @@ var bodyParser = require('body-parser');
 
 router.use(bodyParser.urlencoded({ extended: false }));
 router.use(bodyParser.json());
-var User = require('../models/User');
+var User = require('../../models/User');
 
-const {emailAndPasswordValid, verifyToken} = require('../util/validator');
+const {emailAndPasswordValid, verifyToken} = require('../../util/validator');
 
 /**
  * Configure JWT
  */
 var jwt = require('jsonwebtoken'); // used to create, sign, and verify tokens
 var bcrypt = require('bcryptjs');
-var config = require('../config'); // get config file
-const { USER_TYPES } = require('../util/constants');
+var config = require('../../config'); // get config file
+const { USER_TYPES } = require('../../util/constants');
 
 router.post('/login', emailAndPasswordValid ,function(req, res) {
 
   User.findOne({ email: req.body.email }, function (err, user) {
-    if (err) return res.status(500).send('Error on the server.');
-    if (!user) return res.status(404).send('No user found.');
+    if (err) return res.status(500).send({ success: false, message: 'Error on the server.'});
+    if (!user) return res.status(404).send({ success: false, message: 'No user found.'});
     
     // check if the password is valid
     var passwordIsValid = bcrypt.compareSync(req.body.password, user.password);
-    if (!passwordIsValid) return res.status(401).send({ auth: false, token: null });
+    if (!passwordIsValid) return res.status(401).send({ success: false, token: null });
 
     // if user is found and password is valid
     // create a token
@@ -34,9 +34,9 @@ router.post('/login', emailAndPasswordValid ,function(req, res) {
     });
 
     // return the information including token as JSON
-    res.status(200).send({ auth: true, token: token });
+    res.status(200).send({ success: true, token: token });
   });
-
+  
 });
 
 router.get('/logout', function(req, res) {
@@ -45,8 +45,8 @@ router.get('/logout', function(req, res) {
 
 router.post('/register', emailAndPasswordValid ,function(req, res) {
 
-  var hashedPassword = bcrypt.hashSync(req.body.password, 8);
 
+  var hashedPassword = bcrypt.hashSync(req.body.password, 8);
   User.create({
     name : req.body.name,
     email : req.body.email,
@@ -54,7 +54,7 @@ router.post('/register', emailAndPasswordValid ,function(req, res) {
     userType: USER_TYPES.USER
   }, 
   function (err, user) {
-    if (err) return res.status(500).send("There was a problem registering the user`.");
+    if (err) return res.status(500).send({ success: false, message:"There was a problem registering the user"});
 
     // if user is registered without errors
     // create a token
@@ -62,7 +62,7 @@ router.post('/register', emailAndPasswordValid ,function(req, res) {
       expiresIn: 86400 // expires in 24 hours
     });
 
-    res.status(200).send({ auth: true, token: token });
+    res.status(200).send({ success: true, token: token });
   });
 
 });
@@ -70,9 +70,12 @@ router.post('/register', emailAndPasswordValid ,function(req, res) {
 router.get('/me', verifyToken, function(req, res, next) {
 
   User.findById(req.userId, { password: 0 }, function (err, user) {
-    if (err) return res.status(500).send("There was a problem finding the user.");
+    if (err) return res.status(500).send({ success: false, message:"There was a problem finding the user"});
     if (!user) return res.status(404).send("No user found.");
-    res.status(200).send(user);
+    res.status(200).send({
+      success: true,
+      data: true
+    });
   });
 
 });

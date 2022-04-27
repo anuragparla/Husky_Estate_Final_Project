@@ -3,7 +3,11 @@ const raw = require('body-parser/lib/types/raw');
 var jwt = require('jsonwebtoken'); // used to create, sign, and verify tokens
 var config = require('../config'); // get our config file
 const User = require("../models/User");
+const Property = require("../models/Property");
+
 const { USER_TYPES } = require('./constants');
+const { getLatLng } = require('./geocode');
+
 
 
 
@@ -74,12 +78,89 @@ function verifyToken(req, res, next) {
 
 function onlyAdmin(req,res, next) {
 
+  
   if(!req.user) res.end(404).send("No User found");
-  if(req.user.userType !== USER_TYPES.ADMIN) res.end(401).send("Not Authenticated for Admin")
-  next();
+  else if(req.user.userType !== USER_TYPES.ADMIN) res.status(401).send("Not Authenticated for Admin")
+  else next();
 }
 
 
+
+async function verifyPropertyDetails(req,res,next) {
+
+
+  let property = req.body;
+
+  if(!property) {
+    res.status(403).end();
+  }
+  //Verify Address
+  //Veridy Title
+  if(!property.title || property.title.length === 0) {
+    res.status(403).send({ message: "Title is wrong"})
+    return;
+  }
+
+  property.price = parseFloat(property.price);
+  if(!property.price || property.price <= 0 ) {
+    res.status(403).send({ message: "Price is invalid"})
+    return;
+
+  }
+
+  property.isForSale = property.isForSale ? property.isForSale === "true" : null;
+  if(!property.isForSale) {
+    res.status(403).send({ message: "Property Type is invalid"})
+    return;
+
+  }
+
+  property.size = parseInt(property.size);
+  if(!property.size || property.size <= 0 ) {
+    res.status(403).send({ message: "Size is invalid"})
+    return;
+
+  }
+  
+  if(!property.confifuration || property.confifuration.length == 0) {
+    res.status(403).send({ message: "Configuration is invalid"})
+    return;
+
+  }
+
+  if(!property.description || property.description.length == 0) {
+    res.status(403).send({ message: "Description is invalid"})
+    return;
+
+  }
+
+  if(!property.images || property.images.length == 0) {
+    res.status(403).send({ message: "Images are not present"})
+    return;
+  }
+
+  let address = property.address;
+  if(!address) {
+    res.status(403).send({ message: "Address is invalid"})
+    return;
+  }
+
+  let json = await getLatLng(address);
+  console.log(json);
+  if(json.length == 0) {
+    res.status(403).send({ message: "Address is invalid"})
+    return;
+  }
+  property.lat = json.results[0].geometry.location.lat;
+  property.lng = json.results[0].geometry.location.lng;
+  property.address = json.results[0].formatted_address;
+
+  //TODO: Check for images here
+
+  req.property = property;
+  next();
+
+}
 
 
 
@@ -89,5 +170,6 @@ module.exports = {
     emailAndPasswordValid,
     validInput,
     verifyToken,
-    onlyAdmin: [verifyToken, onlyAdmin]
+    onlyAdmin: [verifyToken, onlyAdmin],
+    verifyPropertyDetails
 }

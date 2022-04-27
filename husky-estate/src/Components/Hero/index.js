@@ -23,6 +23,14 @@ const Hero = () => {
     };
   });
 
+  function handleClick() {
+    if(!location) {
+      alert("No Query Given")
+      return;
+    }
+    window.open(`/search?q=${location}`).focus();
+  }
+
   return (
     <section className="hero">
       <div className="center-content">
@@ -48,6 +56,7 @@ const Hero = () => {
                 borderTopRightRadius: "0.3rem",
                 borderEndEndRadius: "0.3rem",
               }}
+              onClick={() => handleClick()}
             ></div>
           </div>
         </div>
