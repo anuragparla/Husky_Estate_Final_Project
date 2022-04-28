@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { URL } from "../util/constants";
 import Navbar from "../Components/Navbar";
-import HomeCard from "../Components/HomeCard";
 import HomeGrid from "../Components/HomeGrid";
+import Footer from "../Components/Footer";
 
 const HomesListing = ({ buy }) => {
   const columnsPerRow = 4;
@@ -34,10 +34,9 @@ const HomesListing = ({ buy }) => {
   return (
     <>
       <Navbar />
-      <div className="container  p-5">
+      <div className="container p-10">
         <span className="text-2xl">Properties for {buy ? "Sale" : "Rent"}</span>
-        <HomeGrid properties={properties}></HomeGrid>
-
+        <HomeGrid className="mt-4" properties={properties}></HomeGrid>
       </div>
     </>
   );

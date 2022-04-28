@@ -1,5 +1,5 @@
 import React from "react";
-
+import { Link } from "react-router-dom";
 
 
 
@@ -78,7 +78,7 @@ const HomeCard = function ({ home }) {
                             </dt>
 
                             <dd class="font-medium">
-                                2 rooms
+                                {home.bathroom} rooms
                             </dd>
                         </div>
                     </div>
@@ -97,12 +97,13 @@ const HomeCard = function ({ home }) {
                             </dt>
 
                             <dd class="font-medium">
-                                4 rooms
+                                {home.bedroom} rooms
                             </dd>
                         </div>
                     </div>
                     <div>
-                        <a class="flex items-center justify-between px-5 py-3 text-indigo-600 transition-colors border border-current rounded-lg hover:bg-indigo-600 group active:bg-indigo-500 focus:outline-none focus:ring" href="/download">
+                        <Link class="flex items-center justify-between px-5 py-3 text-indigo-600 transition-colors border border-current rounded-lg hover:bg-indigo-600 group active:bg-indigo-500 focus:outline-none focus:ring" 
+                            to={`/property?id=${home._id}`}>
                             <span class="font-medium transition-colors group-hover:text-white">
                                 Find out more
                             </span>
@@ -112,7 +113,7 @@ const HomeCard = function ({ home }) {
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
                                 </svg>
                             </span>
-                        </a>
+                        </Link>
 
                     </div>
 

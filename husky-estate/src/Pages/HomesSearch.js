@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { FaBars } from "react-icons/fa";
 import { FaCircle } from "react-icons/fa";
-import FooterInfo from "../Components/Footer/FooterInfo";
 import { Link } from "react-router-dom";
 import { URL } from "../util/constants";
+import Footer from "../Components/Footer";
 
 import { useLocation } from "react-router-dom";
 import Navbar3 from "../Components/Navbar";
@@ -64,7 +64,7 @@ const HomesSearch = () => {
           <HomeGrid properties={properties}></HomeGrid>
         </div>
       </div>
-      <FooterInfo />
+      <Footer />
     </>
   );
 };

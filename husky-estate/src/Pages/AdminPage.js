@@ -6,10 +6,11 @@ import Navbar from "../Components/Navbar";
 import img1 from "../assets/home1.jpeg"
 import "../main.css";
 
-const AdminPage = () => { const [availability, setAvailability] = React.useState('Yes');
-const handleChange = (event) => {
-    setAvailability(event.target.value)
-  }
+const AdminPage = () => {
+    const [availability, setAvailability] = React.useState('Yes');
+    const handleChange = (event) => {
+        setAvailability(event.target.value)
+    }
     return (
         <>
             <Navbar />
@@ -80,21 +81,21 @@ const handleChange = (event) => {
                             <div className="flex flex-col justify-center items-center">
                                 <label htmlFor="propertysale">Property For Sale</label>
                                 <div>
-        <input
-          type="radio"
-          value="Yes"
-          checked={availability === 'Yes'}
-          onChange={handleChange}
-        /> Yes
-      </div>
-      <div>
-        <input
-          type="radio"
-          value="No"
-          checked={availability === 'No'}
-          onChange={handleChange}
-        /> No
-      </div>
+                                    <input
+                                        type="radio"
+                                        value="Yes"
+                                        checked={availability === 'Yes'}
+                                        onChange={handleChange}
+                                    /> Yes
+                                </div>
+                                <div>
+                                    <input
+                                        type="radio"
+                                        value="No"
+                                        checked={availability === 'No'}
+                                        onChange={handleChange}
+                                    /> No
+                                </div>
                             </div>
                             <div className="flex items-center justify-center">
                                 <button type="submit" className="bg-blue-500 rounded-medium w-16">Submit</button>

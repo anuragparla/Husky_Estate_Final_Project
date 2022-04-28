@@ -3,6 +3,7 @@ import Navbar3 from "../Components/Navbar";
 import { Link } from "react-router-dom";
 import { validateEmail } from "../util/validator";
 import { URL } from "../util/constants";
+import Footer from "../Components/Footer";
 const SignupPage = () => {
 
   const [password, setPassword] = useState("");
@@ -165,6 +166,7 @@ const SignupPage = () => {
           </form>
         </div>
       </div>
+      <Footer></Footer>
 
 
     </>

@@ -2,6 +2,9 @@ import React from "react";
 import { FaSearch } from "react-icons/fa";
 import { useState, useEffect, useRef } from "react";
 
+import "./Hero.css"
+
+
 const Hero = () => {
   const [location, setLocation] = useState("");
   const searchRef = useRef(null);
@@ -31,37 +34,30 @@ const Hero = () => {
     window.open(`/search?q=${location}`).focus();
   }
 
-  return (
-    <section className="hero">
-      <div className="center-content">
-        <h3>Change starts here</h3>
-        <div className="search-top">
-          <div className="search-2" ref={searchRef}>
-            <input
-              value={location}
-              onChange={(e) => setLocation(e.target.value)}
-              className="search-box"
-              type="text"
-              placeholder="Enter the name of city"
-            />
-            {/* <button  onSubmit={search}> */}
-            <FaSearch className="icon" />
-            {/* </button> */}
-            <div
-              className="search-icon"
-              style={{
-                background: "#fff",
-                width: "17%",
-                height: "3.4rem",
-                borderTopRightRadius: "0.3rem",
-                borderEndEndRadius: "0.3rem",
-              }}
-              onClick={() => handleClick()}
-            ></div>
-          </div>
-        </div>
+  return  (
+    <div class="hero min-h-screen bgimg">
+  <div class="hero-overlay bg-opacity-60"></div>
+  <div class="hero-content text-center text-neutral-content">
+    <div class="max-w-md">
+      <h1 class="mb-5 text-5xl font-bold">Search your Ideal Home</h1>
+      {/* <p class="mb-5">Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda excepturi exercitationem quasi. In deleniti eaque aut repudiandae et a id nisi.</p> */}
+      <center>
+      <div className="flex flex-col gap-4">
+      <div>
+      <input  value={location}
+              onChange={(e) => setLocation(e.target.value)} 
+              type="text" 
+              placeholder="Type here" 
+              class="grow input input-bordered w-full max-w-xs text-black" />
+       </div>
+       <div>
+       <button class="btn btn-primary" onClick={handleClick}>Search</button>
+       </div>
       </div>
-    </section>
+      </center>
+    </div>
+  </div>
+</div>
   );
-};
+}
 export default Hero;

@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import { validateEmail } from "../util/validator";
 import Cookies from 'universal-cookie';
 import { URL } from "../util/constants";
+import Footer from "../Components/Footer";
 
 
 const LoginPage = () => {
@@ -119,6 +120,7 @@ const LoginPage = () => {
                     </form>
                 </div>
             </div>
+            <Footer></Footer>
 
 
         </>

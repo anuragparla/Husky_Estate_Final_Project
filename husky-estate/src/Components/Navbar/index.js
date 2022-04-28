@@ -11,7 +11,7 @@ import { URL } from "../../util/constants";
 
 const PageLink = ({ to, children }) => {
   return (
-    <Link class="text-gray-700 hover:text-he-blue link link-hover" to={to} >{children}</Link>
+    <li><Link class="text-gray-700 hover:text-he-blue link link-hover" to={to} >{children}</Link></li>
   );
 }
 
@@ -21,7 +21,7 @@ const Navbar3 = () => {
 
   useEffect(() => {
 
-    if(!account) {
+    if (!account) {
       const token = new Cookies().get("auth");
       getAccount(token);
     }
@@ -36,88 +36,61 @@ const Navbar3 = () => {
       }
     });
 
-    if(res.status === 200) {
+    if (res.status === 200) {
       let json = await res.json();
       console.log(json);
       setAccount(json.data);
-    } 
+    }
   }
 
   const LoginSignup = () => {
     return (
-      <div class="items-center hidden space-x-4 lg:flex">
-      <Link
-        class="px-5 py-2 text-sm font-medium text-gray-600 bg-gray-100 rounded-lg"
-        to="/login"
-      >
-        Log in
-      </Link>
-      <Link
-        class="px-5 py-2 text-sm font-medium text-white bg-blue-600 rounded-lg"
-        to="/signup"
-      >
-        Sign up
-      </Link>
-    </div>
+      <div class="navbar-end flex flex-row gap-4">
+        <Link class="btn btn-ghost" to="/login">Login</Link>
+        <Link class="btn btn-primary" to="/signup">Signup</Link>
+      </div>
     )
   }
 
   const AccountLogout = () => {
     return (
-      <div class="items-center hidden space-x-4 lg:flex">
-      <span>{account.name}</span>
-      <Link
-        class="px-5 py-2 text-sm font-medium text-gray-600 bg-gray-100 rounded-lg"
-        to="/logout"
-      >
-        Logout
-      </Link>
-    </div>
+      <div class="navbar-end flex flex-row gap-4">
+        <span>{account.name}</span>
+        <Link class="btn btn-primary" to="/signup">Signup</Link>
+      </div>
     )
   }
 
 
   return (
-    <header class="shadow-sm">
-      <div
-        class="flex items-center justify-between h-16 max-w-screen-xl px-4 mx-auto"
-      >
-        <div class="flex items-center space-x-4">
-          <PageLink to="/"><span className="text-sky-900 text-xl">HuskyEstate</span></PageLink>
+    <div class="navbar bg-base-100">
+      <div class="navbar-start">
+        <div class="dropdown">
+          <label tabindex="0" class="btn btn-ghost lg:hidden">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h8m-8 6h16" /></svg>
+          </label>
+          <ul tabindex="0" class="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52">
+            <PageLink to="/buy">Buy</PageLink>
+            <PageLink to="/rent">Rent</PageLink>
+            <PageLink to="/agents">Agents</PageLink>
+            <PageLink to="/about">About</PageLink>
+            <PageLink to="/contact">Contact</PageLink>
+          </ul>
         </div>
-
-
-
-        <nav
-          class="items-center justify-center hidden space-x-8 text-sm font-medium lg:flex lg:flex-1 lg:w-0"
-        >
+        <Link class="btn btn-ghost normal-case text-xl" to="/">HuskyEstate</Link>
+      </div>
+      <div class="navbar-center hidden lg:flex">
+        <ul class="menu menu-horizontal p-0">
           <PageLink to="/buy">Buy</PageLink>
           <PageLink to="/rent">Rent</PageLink>
           <PageLink to="/agents">Agents</PageLink>
           <PageLink to="/about">About</PageLink>
           <PageLink to="/contact">Contact</PageLink>
 
-        </nav>
-
-        {account ? <AccountLogout/> : <LoginSignup/>}
-
+        </ul>
       </div>
-
-      <div class="border-t border-gray-100 lg:hidden">
-        <nav
-          class="flex items-center justify-center p-4 overflow-x-auto text-sm font-medium gap-x-5"
-        >
-          <PageLink to="/buy">Buy</PageLink>
-          <PageLink to="/rent">Rent</PageLink>
-          {/* <PageLink  to="/agents">Agents</PageLink>
-          <PageLink  to="/about">About</PageLink>
-          <PageLink  to="/contact">Contact</PageLink> */}
-          <PageLink to="/login">Login</PageLink>
-          <PageLink to="/signup">Signup</PageLink>
-        </nav>
-      </div>
-
-    </header>
+      {account ?<AccountLogout></AccountLogout> : <LoginSignup></LoginSignup>} 
+    </div>
   )
 };
 
