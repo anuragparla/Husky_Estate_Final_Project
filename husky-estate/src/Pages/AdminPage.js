@@ -6,103 +6,110 @@ import Navbar from "../Components/Navbar";
 import img1 from "../assets/home1.jpeg"
 import "../main.css";
 
-const AdminPage = () => { const [availability, setAvailability] = React.useState('Yes');
-const handleChange = (event) => {
-    setAvailability(event.target.value)
-  }
+const AdminPage = () => {
+    const [availability, setAvailability] = React.useState('Yes');
+    const handleChange = (event) => {
+        setAvailability(event.target.value)
+    }
     return (
         <>
             <Navbar />
             <br></br>
             <div className="container">
-                {/* <div class="grid grid-cols-2 gap-3"> */}
-                <div className="columns-2">
-                    <div><br></br><img src={img1} alt="BigCo Inc. logo" /></div>
-                    <div>
+                <div className="row">
+
+                    <h2 className="text-center">Enter Property Details</h2>
+                    <div className="col-sm-6">
+                        <img src={img1} alt="BigCo Inc. logo" />
+                    </div>
+                    <div className="col-sm-6">
                         <form action="">
-                            <div className="flex flex-col justify-center items-center">
-                                <h2>Enter Property Details</h2>
-                                <label htmlFor="propertyname">Property Name</label>
-                                <input type="text" name="propertyname" id="propertyname"
-                                    className="border"
-                                    placeholder="Location"
-                                    style={{ height: "34px", width: "500px" }} />
-                            </div>
 
-                            <div className="flex flex-col justify-center items-center">
-                                <label htmlFor="propertyaddress">Property Address</label>
-                                <input type="text" name="propertyaddress" id="propertyname"
-                                    className="border"
+                            <div class="form-group row">
+                                <label htmlFor="Title" class="col-2 col-form-label">Title</label>
+                                <div class="col-10">
+                                    <input type="text" class="form-control" id="Title" />
+                                </div>
+                            </div> <br></br>
 
-                                    placeholder="Address"
-                                    style={{ height: "34px", width: "500px" }} />
-                            </div>
+                            <div class="form-group row">
+                                <label htmlFor="Address" class="col-2 col-form-label">Address</label>
+                                <div class="col-10">
+                                    <input type="text" class="form-control" id="Address" />
+                                </div>
+                            </div> <br></br>
 
-                            <div className="flex flex-col justify-center items-center">
-                                <label htmlFor="propertyaddress">Price</label>
-                                <input type="text" name="price" id="price"
-                                    className="border"
+                            <div class="form-group row">
+                                <label htmlFor="Price" class="col-2 col-form-label">Price</label>
+                                <div class="col-10">
+                                    <input type="text" class="form-control" id="Price" />
+                                </div>
+                            </div> <br></br>
 
-                                    placeholder="Price"
-                                    style={{ height: "34px", width: "500px" }}
-                                />
-                            </div>
+                            <div class="form-group row">
+                                <label htmlFor="Size" class="col-2 col-form-label">Size(Sq.feet)</label>
+                                <div class="col-10">
+                                    <input type="number" class="Size" id="Size" />
+                                </div>
+                            </div> <br></br>
+
+                            <div class="form-group row">
+                                <label htmlFor="Date" class="col-2 col-form-label">Date</label>
+                                <div class="col-10">
+                                    <input type="date" class="form-control" id="Date" />
+                                </div>
+                            </div> <br></br>
+
+                            <div class="form-group row">
+                                <label htmlFor="Bedrooms" class="col-2 col-form-label">Bedrooms</label>
+                                <div class="col-10">
+                                    <input type="text" class="form-control" id="Bedrooms" />
+                                </div>
+                            </div> <br></br>
+
+                            <div class="form-group row">
+                                <label htmlFor="Description" class="col-2 col-form-label">Description</label>
+                                <div class="col-10">
+                                    <input type="text" class="form-control" id="Description" />
+                                </div>
+                            </div> <br></br>
+
+                            <div class="form-group row">
+                                <label htmlFor="image" class="col-2 col-form-label">Upload Image</label>
+                                <div class="col-10">
+                                    <input type="file" class="form-control" id="image" />
+                                </div>
+                            </div> <br></br>
 
 
-                            <div className="flex flex-col justify-center items-center">
-                                <label htmlFor="propertysize">Property Size</label>
-                                <input type="number" name="propertysize" id="propertysize" className="border"
-                                    placeholder="Property Size"
-                                    style={{ height: "34px", width: "500px" }} />
-                            </div>
-
-                            <div className="flex flex-col justify-center items-center">
-                                <label htmlFor="propertydescription">Description</label>
-                                <input type="text" name="propertydescription" id="propertydescription" className="border"
-                                    placeholder="Description"
-                                    style={{ height: "34px", width: "500px" }} />
-                            </div>
-
-                            <div className="flex flex-col justify-center items-center">
-                                <label htmlFor="listingdate">Date Of Listing</label>
-                                <input type="date" name="listingdate" id="listingdate" className="border"
-                                    placeholder="Date Of Listing"
-                                    style={{ height: "34px", width: "500px" }} />
-                            </div>
-
-                            <div className="flex flex-col justify-center items-center">
-                                <label htmlFor="images">Upload Images</label>
-                                <input type="images" name="images" id="images" className="border"
-                                    placeholder="Upload Images"
-                                    style={{ height: "34px", width: "500px" }} />
-                            </div>
-
-                            <div className="flex flex-col justify-center items-center">
+                            <div className="form-group row">
                                 <label htmlFor="propertysale">Property For Sale</label>
                                 <div>
-        <input
-          type="radio"
-          value="Yes"
-          checked={availability === 'Yes'}
-          onChange={handleChange}
-        /> Yes
-      </div>
-      <div>
-        <input
-          type="radio"
-          value="No"
-          checked={availability === 'No'}
-          onChange={handleChange}
-        /> No
-      </div>
+                                    <input
+                                        type="radio"
+                                        value="Yes"
+                                        checked={availability === 'Yes'}
+                                        onChange={handleChange}
+                                    /> Rent
+                                                &nbsp;
+                                    <input
+                                        type="radio"
+                                        value="No"
+                                        checked={availability === 'No'}
+                                        onChange={handleChange}
+                                    /> Buy
+                                </div>
+
                             </div>
                             <div className="flex items-center justify-center">
-                                <button type="submit" className="bg-blue-500 rounded-medium w-16">Submit</button>
+                                <button type="submit" className="btn btn-primary">Submit</button> &nbsp;
+                                <button type="submit" className="btn btn-warning">Delete</button>
                             </div>
                         </form>
                     </div>
                 </div>
             </div>
+
             <Footer />
         </>
     )
