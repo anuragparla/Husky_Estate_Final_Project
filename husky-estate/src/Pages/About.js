@@ -80,7 +80,7 @@ const About = () => {
             </svg>
           </span>
 
-          <h6 class="mt-2 font-bold">Accountant</h6>
+          <h6 class="mt-2 font-bold">Trust</h6>
 
           <p class="hidden sm:mt-1 sm:text-sm sm:text-gray-600 sm:block">
             Lorem ipsum dolor sit amet consectetur.
@@ -112,7 +112,7 @@ const About = () => {
             </svg>
           </span>
 
-          <h6 class="mt-2 font-bold">Accountant</h6>
+          <h6 class="mt-2 font-bold">Security</h6>
 
           <p class="hidden sm:mt-1 sm:text-sm sm:text-gray-600 sm:block">
             Lorem ipsum dolor sit amet consectetur.
@@ -144,7 +144,7 @@ const About = () => {
             </svg>
           </span>
 
-          <h6 class="mt-2 font-bold">Accountant</h6>
+          <h6 class="mt-2 font-bold">Long Lasting</h6>
 
           <p class="hidden sm:mt-1 sm:text-sm sm:text-gray-600 sm:block">
             Lorem ipsum dolor sit amet consectetur.
@@ -176,7 +176,7 @@ const About = () => {
             </svg>
           </span>
 
-          <h6 class="mt-2 font-bold">Accountant</h6>
+          <h6 class="mt-2 font-bold">Cost Friendly</h6>
 
           <p class="hidden sm:mt-1 sm:text-sm sm:text-gray-600 sm:block">
             Lorem ipsum dolor sit amet consectetur.
@@ -208,7 +208,7 @@ const About = () => {
             </svg>
           </span>
 
-          <h6 class="mt-2 font-bold">Accountant</h6>
+          <h6 class="mt-2 font-bold">Safe Neighborhood</h6>
 
           <p class="hidden sm:mt-1 sm:text-sm sm:text-gray-600 sm:block">
             Lorem ipsum dolor sit amet consectetur.
@@ -240,7 +240,7 @@ const About = () => {
             </svg>
           </span>
 
-          <h6 class="mt-2 font-bold">Accountant</h6>
+          <h6 class="mt-2 font-bold">Eco Friendly</h6>
 
           <p class="hidden sm:mt-1 sm:text-sm sm:text-gray-600 sm:block">
             Lorem ipsum dolor sit amet consectetur.
@@ -276,10 +276,15 @@ const About = () => {
           </h2>
 
           <p class="mt-4 text-gray-600">
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid,
+            {/* Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid,
             molestiae! Quidem est esse numquam odio deleniti, beatae, magni
             dolores provident quaerat totam eos, aperiam architecto eius quis
-            quibusdam fugiat dicta.
+            quibusdam fugiat dicta. */}
+            We HuskyEstate are the leader in the business of real estate since decades. 
+            We have solutions for all your property isuues, choose your location, budget
+            and leave rest on us. Our team of agents are always there to assist you on
+            each state of property selection. 
+            
           </p>
 
           <a

@@ -25,7 +25,7 @@ const Contact = () => {
         </p>
 
         <div class="mt-8">
-          <a href="" class="text-2xl font-bold text-pink-600"> 0151 475 4450 </a>
+          <a href="" class="text-2xl font-bold text-pink-600"> 617 373 2000 </a>
 
           <address class="mt-2 not-italic">360 Huntington Avenue, Boston, MA 02120</address>
         </div>
