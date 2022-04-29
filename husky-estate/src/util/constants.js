@@ -1,3 +1,3 @@
 module.exports = {
-    URL: "http://localhost:4000/api"
+    URL: "http://18.223.121.76:4000/api"
 }
