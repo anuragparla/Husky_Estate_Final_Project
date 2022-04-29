@@ -1,3 +1,3 @@
 module.exports = {
-    URL: "http://localhost:8080/api"
+    URL: "https://personal-f2e11.uc.r.appspot.com/api"
 }
