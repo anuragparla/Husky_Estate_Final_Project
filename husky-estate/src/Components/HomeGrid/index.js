@@ -29,9 +29,9 @@ const HomeGrid = ({ properties }) => {
       }
     
       const getColumnsForRow = () => {
-        let items = properties.map((home) => {
+        let items = properties.map((home, index) => {
           return (
-            <HomeCard home={home}></HomeCard>
+            <HomeCard home={home} index={index}></HomeCard>
           );
         });
         return items;

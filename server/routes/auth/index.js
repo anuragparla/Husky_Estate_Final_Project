@@ -3,7 +3,7 @@ var router = express.Router();
 var bodyParser = require('body-parser');
 
 
-router.use(bodyParser.urlencoded({ extended: false }));
+router.use(bodyParser.urlencoded({ extended: true }));
 router.use(bodyParser.json());
 var User = require('../../models/User');
 
@@ -74,7 +74,7 @@ router.get('/me', verifyToken, function(req, res, next) {
     if (!user) return res.status(404).send("No user found.");
     res.status(200).send({
       success: true,
-      data: true
+      data: user
     });
   });
 

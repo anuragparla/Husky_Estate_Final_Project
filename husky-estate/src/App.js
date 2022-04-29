@@ -12,11 +12,17 @@ import LoginPage from "./Pages/Login";
 import LogoutPage from "./Pages/Logout";
 import SignupPage from "./Pages/Signup";
 
+import {LoadScript} from '@react-google-maps/api'
+
 function App() {
   return (
+    <LoadScript
+    googleMapsApiKey="AIzaSyCQHWbUS4oyxGZhmorX94Y4PSz9lSpKIg0"
+>
+
     <Router>
       <Routes>
-        <Route path="/" exact element={<HomePage />} />
+         <Route path="/" exact element={<HomePage />} />
         <Route exact path="/buy" element={<HomesListing buy={true} key="buy"/>} />
         <Route exact path="/rent" element={<HomesListing buy={false} key="rent" />} />
         <Route exact path="/search" element={<HomesSearch />} />
@@ -33,10 +39,10 @@ function App() {
 
 
 
-
         {/* <Route exact path="/homesForRent" element={<HomesForRent />} /> */}
       </Routes>
     </Router>
+    </LoadScript>
   );
 }
 

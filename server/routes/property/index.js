@@ -3,7 +3,8 @@ var router = express.Router();
 var bodyParser = require('body-parser');
 
 const {verifyToken, onlyAdmin, verifyPropertyDetails } = require('../../util/validator');
-router.use(bodyParser.urlencoded({ extended: true }));
+
+router.use(bodyParser.urlencoded({ limit: "50mb",extended: true }));
 
 var Property = require('../../models/Property');
 const { getLatLng, getDistanceFromLatLonInKm } = require('../../util/geocode');
@@ -17,11 +18,11 @@ router.post("/new", onlyAdmin,verifyPropertyDetails, (req,res) => {
         res.end(404);
         return;
     }
-
+    console.log(typeof property.images);
     Property.create(property, 
       function (err, user) {
-        if (err) {return res.status(500).send({success:false, message:"There was a problem finding the Property."});}
-        res.status(200).end();
+        if (err) {console.log(err);return res.status(500).send({success:false, message:"There was a problem finding the Property."});}
+        res.status(200).send({ success: true});
       });
 
 });

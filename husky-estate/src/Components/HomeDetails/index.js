@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import GoogleMaps from "../GoogleMaps";
 
 const HomeDetailts = ({ home }) => {
 
@@ -33,19 +34,6 @@ const HomeDetailts = ({ home }) => {
                             src={frontImage}
                             class="w-full rounded-xl h-72 lg:h-[540px] object-cover"
                         />
-
-                        <div class="absolute bottom-4 left-1/2 -translate-x-1/2 rounded-full bg-black/75 text-white px-3 py-1.5 inline-flex items-center">
-                            <svg
-                                class="w-4 h-4"
-                                xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"
-                            >
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v3m0 0v3m0-3h3m-3 0H7" />
-                            </svg>
-
-                            <span class="text-xs ml-1.5">
-                                Hover to zoom
-                            </span>
-                        </div>
                     </div>
 
                     <ul class="flex gap-1 mt-1">
@@ -55,6 +43,7 @@ const HomeDetailts = ({ home }) => {
                             </li>
                         ))}
                     </ul>
+
                 </div>
 
                 <div class="lg:top-0 lg:sticky">
@@ -91,7 +80,9 @@ const HomeDetailts = ({ home }) => {
                 <div class="lg:col-span-3">
                     <div class="prose max-w-none">
                         {home.description}
+                        <GoogleMaps center={{ lat: home.lat, lng:home.lng}} title={home.ti}>
 
+                        </GoogleMaps>
                     </div>
                 </div>
             </div>

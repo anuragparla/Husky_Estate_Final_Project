@@ -56,7 +56,7 @@ const Navbar3 = () => {
     return (
       <div class="navbar-end flex flex-row gap-4">
         <span>{account.name}</span>
-        <Link class="btn btn-primary" to="/signup">Signup</Link>
+        <Link class="btn btn-primary" to="/Logout">Logout</Link>
       </div>
     )
   }

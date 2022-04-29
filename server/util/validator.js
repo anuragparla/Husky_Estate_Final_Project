@@ -108,25 +108,25 @@ async function verifyPropertyDetails(req,res,next) {
 
   }
 
-  property.isForSale = property.isForSale ? property.isForSale === "true" : null;
-  if(!property.isForSale) {
-    res.status(403).send({ message: "Property Type is invalid"})
-    return;
-
-  }
 
   property.size = parseInt(property.size);
   if(!property.size || property.size <= 0 ) {
     res.status(403).send({ message: "Size is invalid"})
     return;
-
   }
-  
-  if(!property.confifuration || property.confifuration.length == 0) {
-    res.status(403).send({ message: "Configuration is invalid"})
+
+  property.bedroom = parseInt(property.bedroom);
+  if(!property.bedroom || property.bedroom <= 0 ) {
+    res.status(403).send({ message: "Bedroom is invalid"})
     return;
-
   }
+
+  property.bathroom = parseInt(property.bathroom);
+  if(!property.bathroom || property.bathroom <= 0 ) {
+    res.status(403).send({ message: "Bathroom is invalid"})
+    return;
+  }
+ 
 
   if(!property.description || property.description.length == 0) {
     res.status(403).send({ message: "Description is invalid"})
@@ -138,6 +138,8 @@ async function verifyPropertyDetails(req,res,next) {
     res.status(403).send({ message: "Images are not present"})
     return;
   }
+
+  
 
   let address = property.address;
   if(!address) {
@@ -155,7 +157,20 @@ async function verifyPropertyDetails(req,res,next) {
   property.lng = json.results[0].geometry.location.lng;
   property.address = json.results[0].formatted_address;
 
-  //TODO: Check for images here
+  if(!property.images) {
+    res.status(403).send({ message: "Images is invalid"})
+    return;
+  }
+
+  console.log(property.images);
+  property.images = property.images.split(",");
+  if(!property.images || property.images.length === 0) {
+    res.status(403).send({ message: "Images is invalid"})
+    return;
+  }
+  console.log(property.images);
+  
+
 
   req.property = property;
   next();

@@ -1,43 +1,30 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
+import "./HomeCard.css"
+
+const HomeCard = function ({ home,index }) {
+
+    const { images } = home;
+    const imagesLength = images.length;
+    const key = Math.random();
 
 
-const HomeCard = function ({ home }) {
     return (
         <a
             href=""
             class="block p-4 rounded-lg shadow-sm shadow-indigo-100"
         >
             <div class="carousel w-full">
-                <div id="slide1" class="carousel-item relative w-full">
-                    <img src="https://api.lorem.space/image/car?w=800&h=200&hash=8B7BCDC2" class="object-cover w-full h-56 rounded-md" /> /
-                    <div class="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
-                        <a href="#slide4" class="btn btn-circle">❮</a>
-                        <a href="#slide2" class="btn btn-circle">❯</a>
+                {images.map((image, index) => (
+                    <div id={`slide${index}${key}`} class="carousel-item relative w-full">
+                        <img src={image} class="object-cover w-full h-56 rounded-md" /> 
+                        <div class="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
+                            <a href={`#slide${index === 0? imagesLength-1: index-1}${key}`} class="btn btn-circle disabled-link">❮</a>
+                            <a href={`#slide${index+1 === imagesLength ? 0: index+1}${key}`} class="btn btn-circle disabled-link">❯</a>
+                        </div>
                     </div>
-                </div>
-                <div id="slide2" class="carousel-item relative w-full">
-                    <img src="https://api.lorem.space/image/car?w=800&h=200&hash=500B67FB" class="object-cover w-full h-56 rounded-md" /> /
-                    <div class="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
-                        <a href="#slide1" class="btn btn-circle">❮</a>
-                        <a href="#slide3" class="btn btn-circle">❯</a>
-                    </div>
-                </div>
-                <div id="slide3" class="carousel-item relative w-full">
-                    <img src="https://api.lorem.space/image/car?w=800&h=200&hash=A89D0DE6" class="object-cover w-full h-56 rounded-md" /> /
-                    <div class="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
-                        <a href="#slide2" class="btn btn-circle">❮</a>
-                        <a href="#slide4" class="btn btn-circle">❯</a>
-                    </div>
-                </div>
-                <div id="slide4" class="carousel-item relative w-full">
-                    <img src="https://api.lorem.space/image/car?w=800&h=200&hash=225E6693" class="object-cover w-full h-56 rounded-md" /> /
-                    <div class="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
-                        <a href="#slide3" class="btn btn-circle">❮</a>
-                        <a href="#slide1" class="btn btn-circle">❯</a>
-                    </div>
-                </div>
+                ))}
             </div>
 
             <div class="mt-2">
@@ -102,7 +89,7 @@ const HomeCard = function ({ home }) {
                         </div>
                     </div>
                     <div>
-                        <Link class="flex items-center justify-between px-5 py-3 text-indigo-600 transition-colors border border-current rounded-lg hover:bg-indigo-600 group active:bg-indigo-500 focus:outline-none focus:ring" 
+                        <Link class="flex items-center justify-between px-5 py-3 text-indigo-600 transition-colors border border-current rounded-lg hover:bg-indigo-600 group active:bg-indigo-500 focus:outline-none focus:ring"
                             to={`/property?id=${home._id}`}>
                             <span class="font-medium transition-colors group-hover:text-white">
                                 Find out more

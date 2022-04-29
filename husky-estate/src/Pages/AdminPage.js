@@ -1,111 +1,203 @@
-import React from "react";
-import Hero from "../Components/Hero";
+import React, { useEffect, useState } from "react";
 import Footer from "../Components/Footer";
-import Service from "../Components/Service";
 import Navbar from "../Components/Navbar";
 import img1 from "../assets/home1.jpeg"
-import "../main.css";
+import Cookies from "universal-cookie";
+import { URL } from "../util/constants";
+
+import { PickerInline } from 'filestack-react';
 
 const AdminPage = () => {
     const [availability, setAvailability] = React.useState('Yes');
-    const handleChange = (event) => {
-        setAvailability(event.target.value)
+    const [images, setImages] = useState([]);
+    const [frontImage, setFrontImage] = useState("https://api.lorem.space/image/furniture?w=150&h=150");
+    const [account, setAccount] = useState(null);
+
+    const config = {
+        accept: "image/*",
+        maxFiles: 3
+    }
+
+    useEffect(() => {
+
+        if (!account) {
+            const token = new Cookies().get("auth");
+            getAccount(token);
+        }
+
+    }, []);
+
+
+    const getAccount = async (token) => {
+        let res = await fetch(`${URL}/auth/me`, {
+            method: "GET",
+            headers: {
+                "x-access-token": token
+            }
+        });
+        if (res.status === 200) {
+            let json = await res.json();
+            console.log(json);
+            let acc = json.data;
+            if (!acc || !(acc.userType === "ADMIN")) {
+                window.open("/", "_self").focus();
+            }
+        }
+    }
+
+
+
+    const uploadDone = (res) => {
+        let uploadedFiles = res.filesUploaded;
+        let ims = [];
+        for (let file of uploadedFiles) {
+            ims.push(file.url);
+        }
+        setImages(ims);
+    }
+
+    
+
+
+    const handleSubmit = async (e) => {
+        let formData = new FormData(e.target);
+        e.preventDefault();
+
+        if (images.length == 0) {
+            alert("No Files Uploaded");
+            return;
+        }
+
+        const data = new URLSearchParams(formData);
+        data.set("images", images.join())
+         
+        data.set("isForSale", data.get("isForSale") === "true")
+
+        let res = await fetch(`${URL}/property/new`, {
+            method: "POST",
+            body: data,
+            headers: {
+                'x-access-token': new Cookies().get("auth")
+            }
+        });
+        console.log(res);
+        let json = await res.json();
+        if (json.success) {
+            alert("Property Added");
+        } else alert(json.message);
+
     }
     return (
         <>
             <Navbar />
-            <br></br>
-            <div className="container">
-                <div className="row">
+            <div className="container p-5">
 
-                    <h2 className="text-center">Enter Property Details</h2>
-                    <div className="col-sm-6">
-                        <img src={img1} alt="BigCo Inc. logo" />
-                    </div>
-                    <div className="col-sm-6">
-                        <form action="">
+                <div className="flex flex-col auto-cols-max gap-4">
 
-                            <div class="form-group row">
-                                <label htmlFor="Title" class="col-2 col-form-label">Title</label>
-                                <div class="col-10">
-                                    <input type="text" class="form-control" id="Title" />
-                                </div>
-                            </div> <br></br>
+                    <h2 className="text-lg" >Enter Property Details</h2>
+                    <div className="flex gap-4 flex-col  md:flex-row lg:flex-row">
+                        <div class="w-full md:w-2/5 lg:w-2/5 lg:col-span-3 ">
+                            <div class="relative mt-4">
+                                <img
+                                    alt=""
+                                    src={frontImage}
+                                    class="w-full rounded-xl h-72 lg:h-[540px] object-cover"
+                                />
+                            </div>
 
-                            <div class="form-group row">
-                                <label htmlFor="Address" class="col-2 col-form-label">Address</label>
-                                <div class="col-10">
-                                    <input type="text" class="form-control" id="Address" />
-                                </div>
-                            </div> <br></br>
+                            <ul class="flex gap-1 mt-1">
+                                {images.map((image) => (
+                                    <li>
+                                        <img class="object-cover w-16 h-16 rounded-md" src={image} alt="" onClick={() => setFrontImage(image)} />
+                                    </li>
+                                ))}
+                            </ul>
 
-                            <div class="form-group row">
-                                <label htmlFor="Price" class="col-2 col-form-label">Price</label>
-                                <div class="col-10">
-                                    <input type="text" class="form-control" id="Price" />
-                                </div>
-                            </div> <br></br>
+                        </div>
+                        <div className="w-full md:w-3/5 lg:w-3/5">
 
-                            <div class="form-group row">
-                                <label htmlFor="Size" class="col-2 col-form-label">Size(Sq.feet)</label>
-                                <div class="col-10">
-                                    <input type="number" class="Size" id="Size" />
-                                </div>
-                            </div> <br></br>
+                            <form action="" className="flex flex-col gap-4" onSubmit={handleSubmit}>
 
-                            <div class="form-group row">
-                                <label htmlFor="Date" class="col-2 col-form-label">Date</label>
-                                <div class="col-10">
-                                    <input type="date" class="form-control" id="Date" />
-                                </div>
-                            </div> <br></br>
-
-                            <div class="form-group row">
-                                <label htmlFor="Bedrooms" class="col-2 col-form-label">Bedrooms</label>
-                                <div class="col-10">
-                                    <input type="text" class="form-control" id="Bedrooms" />
-                                </div>
-                            </div> <br></br>
-
-                            <div class="form-group row">
-                                <label htmlFor="Description" class="col-2 col-form-label">Description</label>
-                                <div class="col-10">
-                                    <input type="text" class="form-control" id="Description" />
-                                </div>
-                            </div> <br></br>
-
-                            <div class="form-group row">
-                                <label htmlFor="image" class="col-2 col-form-label">Upload Image</label>
-                                <div class="col-10">
-                                    <input type="file" class="form-control" id="image" />
-                                </div>
-                            </div> <br></br>
-
-
-                            <div className="form-group row">
-                                <label htmlFor="propertysale">Property For Sale</label>
                                 <div>
-                                    <input
-                                        type="radio"
-                                        value="Yes"
-                                        checked={availability === 'Yes'}
-                                        onChange={handleChange}
-                                    /> Rent
-                                                &nbsp;
-                                    <input
-                                        type="radio"
-                                        value="No"
-                                        checked={availability === 'No'}
-                                        onChange={handleChange}
-                                    /> Buy
+                                    <label class="block text-xs font-medium text-gray-500" for="title"> Title </label>
+                                    <input class="w-full p-3 mt-1 text-sm border-2 border-gray-200 rounded"
+                                        id="title" type="text" required name="title" />
+                                </div>
+                                <div>
+                                    <label class="block text-xs font-medium text-gray-500" for="address"> Address </label>
+                                    <input class="w-full p-3 mt-1 text-sm border-2 border-gray-200 rounded"
+                                        id="address" type="text" required name="address" />
+                                </div>
+                                <div>
+                                    <label class="block text-xs font-medium text-gray-500" for="bedroom"> Bedrooms </label>
+                                    <input class="w-full p-3 mt-1 text-sm border-2 border-gray-200 rounded"
+                                        id="bedroom" type="number" min="0" step="1" required name="bedroom" />
+                                </div>
+                                <div>
+                                    <label class="block text-xs font-medium text-gray-500" for="bathroom"> Bathroom </label>
+                                    <input class="w-full p-3 mt-1 text-sm border-2 border-gray-200 rounded"
+                                        id="bathroom" type="number" min="0" step="1" required name="bathroom" />
+                                </div>
+                                <div>
+                                    <label class="block text-xs font-medium text-gray-500" for="price"> Price </label>
+                                    <input class="w-full p-3 mt-1 text-sm border-2 border-gray-200 rounded"
+                                        id="price" type="number" min="0" step="1" required name="price" />
+                                </div>
+                                <div>
+                                    <label class="block text-xs font-medium text-gray-500" for="size"> Size </label>
+                                    <input class="w-full p-3 mt-1 text-sm border-2 border-gray-200 rounded"
+                                        id="size" type="number" min="0" step="1" required name="size" />
+                                </div>
+                                <div>
+                                    <label class="sr-only" for="message">Description</label>
+                                    <textarea
+                                        class="textarea textarea-bordered w-full p-3 text-sm border-gray-200 rounded-lg"
+                                        placeholder="Message"
+                                        rows="8"
+                                        id="message"
+                                        required
+                                        name="description"
+                                    ></textarea>
                                 </div>
 
-                            </div>
-                            <div className="flex items-center justify-center">
-                                <button type="submit" className="btn btn-primary">Submit</button> &nbsp;
-                                <button type="submit" className="btn btn-warning">Delete</button>
-                            </div>
-                        </form>
+                                {/* <div>
+                                    <label htmlFor="image" class="col-2 col-form-label">Upload Image</label>
+                                    <div class="col-10">
+                                        <input type="file" class="form-control" id="image" accept="image/*" multiple name="images" />
+                                    </div>
+                                </div> */}
+                                <PickerInline
+                                    apikey="AsodnNr1qSIW4WMC4pV5Qz"
+                                    onUploadDone={uploadDone}
+                                    pickerOptions={config}
+                                />
+
+
+                                <div className="">
+                                    <label htmlFor="propertysale">Property For Sale</label>
+                                    <div>
+                                        <input
+                                            type="radio"
+                                            value="false"
+                                            name="isForSale"
+                                        /> Rent
+                                        &nbsp;
+                                        <input
+                                            type="radio"
+                                            value="true"
+                                            name="isForSale"
+                                        
+                                        /> Buy
+                                    </div>
+
+                                </div>
+                                <div className="flex items-center justify-center">
+                                    <button type="submit" className="btn btn-primary">Submit</button> &nbsp;
+                                    <button type="button" className="btn btn-warning">Delete</button>
+                                </div>
+                            </form>
+
+                        </div>
                     </div>
                 </div>
             </div>
