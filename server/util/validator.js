@@ -29,11 +29,11 @@ const emailAndPasswordValid = (req, res, next) => {
         return;
     } else if (!validEmail) {
         //email not valid
-        res.status(400).send("Email is not valid");
+        res.status(400).send({sucess: false, message:"Email is not valid"});
 
     } else {
         //passsword not valid
-        res.status(400).send("Password is not valid");
+        res.status(400).send({sucess: false, message:"Password is not valid"});
 
     }
 
@@ -162,7 +162,7 @@ async function verifyPropertyDetails(req,res,next) {
     return;
   }
 
-  
+
   console.log(property.images);
   property.images = property.images.split(",");
   if(!property.images || property.images.length === 0) {

@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import { MainFooterLinks } from "../../data";
 import logo1 from "../../assets/logo.png"
+import { Link } from "react-router-dom";
 const Footer = () => {
-  const [footer, setFooter] = useState(MainFooterLinks);
   return (
       <footer class="footer p-10 bg-base-200 text-base-content">
   <div>
@@ -13,23 +13,20 @@ const Footer = () => {
   </div> 
   <div>
     <span class="footer-title">Services</span> 
-    <a class="link link-hover">Buy Property</a> 
-    <a class="link link-hover">Sell Property</a> 
-    <a class="link link-hover">Rent a Property</a> 
-    <a class="link link-hover">Hire an agent</a>
+    <Link class="link link-hover" to="/buy">Buy Property</Link> 
+    <Link class="link link-hover" to="/rent">Rent a Property</Link> 
+    <Link class="link link-hover" to="/agents">Hire an agent</Link>
   </div> 
   <div>
     <span class="footer-title">Company</span> 
-    <a class="link link-hover">About us</a> 
-    <a class="link link-hover">Contact</a> 
-    <a class="link link-hover">Jobs</a> 
-    <a class="link link-hover">Press kit</a>
+    <Link class="link link-hover" to="/about">About us</Link> 
+    <Link class="link link-hover" to="/contact">Contact</Link> 
   </div> 
   {/* <div>
     <span class="footer-title">Legal</span> 
-    <a class="link link-hover">Terms of use</a> 
-    <a class="link link-hover">Privacy policy</a> 
-    <a class="link link-hover">Cookie policy</a>
+    <Link class="link link-hover">Terms of use</Link> 
+    <Link class="link link-hover">Privacy policy</Link> 
+    <Link class="link link-hover">Cookie policy</Link>
   </div> */}
 </footer>
   );

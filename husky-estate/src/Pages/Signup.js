@@ -69,7 +69,7 @@ const SignupPage = () => {
             mollitia?
           </p>
 
-          <form action="" class="p-8 mt-6 mb-0 space-y-4 rounded-lg shadow-2xl">
+          <form action="" class="p-8 mt-6 mb-0 space-y-4 rounded-lg shadow-2xl" onSubmit={handleClick}>
             <p class="text-lg font-medium">Sign in to your account</p>
 
             <div>
@@ -83,7 +83,7 @@ const SignupPage = () => {
                   onChange={(e) => setName(e.target.value)}
                   class="w-full p-4 pr-12 text-sm border-gray-200 rounded-lg shadow-sm"
                   placeholder="Jack Dorsey"
-
+                  required
                 />
 
               </div>
@@ -102,6 +102,7 @@ const SignupPage = () => {
 
                   class="w-full p-4 pr-12 text-sm border-gray-200 rounded-lg shadow-sm"
                   placeholder="elon@isagod.xyz"
+                  required
                 />
 
                 <span class="absolute inset-y-0 inline-flex items-center right-4">
@@ -134,6 +135,7 @@ const SignupPage = () => {
                   onChange={(e) => setPassword(e.target.value)}
                   class="w-full p-4 pr-12 text-sm border-gray-200 rounded-lg shadow-sm"
                   placeholder="ssshhh...."
+                  required
                 />
               </div>
             </div>
@@ -149,6 +151,7 @@ const SignupPage = () => {
                   onChange={(e) => setConfirmPassword(e.target.value)}
                   class="w-full p-4 pr-12 text-sm border-gray-200 rounded-lg shadow-sm"
                   placeholder="sshhh again...."
+                  required
                 />
 
               </div>
@@ -156,7 +159,6 @@ const SignupPage = () => {
 
 
             <button type="submit" class="block w-full px-5 py-3 text-sm font-medium text-white bg-indigo-600 rounded-lg" 
-                onClick={(e) => handleClick(e)}
               >
               Sign up
             </button>

@@ -24,6 +24,7 @@ const LoginPage = () => {
             alert("Email is not good");
             return;
         }
+
         const data = {email, password: passsword}
         const res = await fetch(`${URL}/auth/login`, {
             method:"POST",
@@ -55,7 +56,7 @@ const LoginPage = () => {
                         mollitia?
                     </p>
 
-                    <form action="" class="p-8 mt-6 mb-0 space-y-4 rounded-lg shadow-2xl">
+                    <form action="" class="p-8 mt-6 mb-0 space-y-4 rounded-lg shadow-2xl" onSubmit={handleClick}>
                         <p class="text-lg font-medium">Sign in to your account</p>
 
                         <div>
@@ -71,6 +72,7 @@ const LoginPage = () => {
 
                                     class="w-full p-4 pr-12 text-sm border-gray-200 rounded-lg shadow-sm"
                                     placeholder="Enter email"
+                                    required
                                 />
 
                                 <span class="absolute inset-y-0 inline-flex items-center right-4">
@@ -104,13 +106,13 @@ const LoginPage = () => {
 
                                     class="w-full p-4 pr-12 text-sm border-gray-200 rounded-lg shadow-sm"
                                     placeholder="Enter password"
+                                    required
                                 />
 
                             </div>
                         </div>
 
-                        <button type="submit" class="block w-full px-5 py-3 text-sm font-medium text-white bg-indigo-600 rounded-lg"
-                        onClick={handleClick}>
+                        <button type="submit" class="block w-full px-5 py-3 text-sm font-medium text-white bg-indigo-600 rounded-lg">
                             Login
                         </button>
 

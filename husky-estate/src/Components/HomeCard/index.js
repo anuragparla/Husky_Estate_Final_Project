@@ -10,7 +10,7 @@ const HomeCard = function ({ home,index, isAdmin}) {
     const imagesLength = images.length;
     const key = Math.random();
 
-    const getLink = () => isAdmin ? `/addProp?id=${home._id}`: `/property?id=${home._id}`;
+    const getLink = () => isAdmin ? `/editProp?id=${home._id}`: `/property?id=${home._id}`;
     
 
     return (

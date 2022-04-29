@@ -51,14 +51,12 @@ router.post("/update", onlyAdmin, verifyPropertyDetails, (req, res) => {
 
 });
 
-router.get("/delete/:id", (req, res) => {
+router.delete("/delete/:id", (req, res) => {
 
-  Property.findOneAndDelete(req.params.id, function (err, prop) {
+  Property.findByIdAndRemove(req.params.id, function (err, prop) {
     if (err) return res.status(500).send({ success: false, message: "There was a problem finding the Property." });
-    if (!user) return res.status(404).send({ success: false, message: "No Property Found" });
     res.status(200).send({
-      success: true,
-      data: prop
+      success: true
     });
   });
 

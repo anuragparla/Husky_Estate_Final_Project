@@ -1,70 +1,22 @@
 import React, { useEffect, useState } from "react";
-import Footer from "../Components/Footer";
-import Navbar from "../Components/Navbar";
-import img1 from "../assets/home1.jpeg"
+import Navbar from "../../Components/Navbar";
+import Footer from "../../Components/Footer";
 import Cookies from "universal-cookie";
-import { URL } from "../util/constants";
+import { URL } from "../../util/constants";
 
-import { useNavigate } from "react-router-dom";
-import { useSearchParams } from "react-router-dom";
 import { PickerInline } from 'filestack-react';
-
-
+import { useNavigate } from "react-router-dom";
 
 const AdminPage = () => {
-
-
     const [images, setImages] = useState([]);
     const [frontImage, setFrontImage] = useState("https://api.lorem.space/image/furniture?w=150&h=150");
     const [account, setAccount] = useState(null);
-    const [property, setProperty] = useState({});
-    const [searchParams, setSearch] = useSearchParams();
-    const [isUpdate, setIsUpdaye] = useState(false);
-
-    let navigate = useNavigate();
-
-  
-
+    const navigate = useNavigate();
 
     const config = {
         accept: "image/*",
         maxFiles: 3
     }
-
-
-    const findHome = async () => {
-        let response = await fetch(`${URL}/property/get/${searchParams.get("id")}`);
-        if(response.status !== 200) {
-            alert("Home not found");
-            return;
-        }
-        let json = await response.json();
-        console.log(json);
-        if(json.success) {
-            setProperty(json.data);
-            
-        } else alert("Home not found");
-    }
-
-    useEffect(() => {
-
-        if (!account) {
-            return;
-        }
-        findHome();
-    }, [account]);
-
-    useEffect(() => {
-        if(!property.title || isUpdate)
-            return;
-        setIsUpdaye(true);
-        setImages(property.images);
-        setFrontImage(property.images[0]);
-
-
-    }, [property]);
-
-    
 
     useEffect(() => {
 
@@ -89,11 +41,9 @@ const AdminPage = () => {
             let acc = json.data;
             
             if (!acc || !(acc.userType === "ADMIN")) {
-                navigate("/", { replace: true});
-                return;
-            } else setAccount(json.data);
-
-        } else return;
+                navigate("/", {replace: true});
+            } else setAccount(account);
+        }
     }
 
 
@@ -118,48 +68,26 @@ const AdminPage = () => {
             alert("No Files Uploaded");
             return;
         }
-        alert("Here");
-
 
         const data = new URLSearchParams(formData);
-
         data.set("images", images.join())
          
         data.set("isForSale", data.get("isForSale") === "true")
 
-        if(isUpdate) data.set("id", property._id);
-
-        let slug = !isUpdate ? "/property/new" : "/property/update";
-
-        let res = await fetch(`${URL+slug}`, {
+        let res = await fetch(`${URL}/property/new`, {
             method: "POST",
             body: data,
             headers: {
                 'x-access-token': new Cookies().get("auth")
             }
         });
-
         console.log(res);
-
         let json = await res.json();
         if (json.success) {
             alert("Property Added");
         } else alert(json.message);
 
     }
-
-    const handleDelete = async (e) => {
-        e.preventDefault();
-        
-    }
-
-    const handleChange = e => {
-        const { name, value } = e.target;
-        setState(prevState => ({
-            ...prevState,
-            [name]: value
-        }));
-    };
     return (
         <>
             <Navbar />
@@ -194,32 +122,32 @@ const AdminPage = () => {
                                 <div>
                                     <label class="block text-xs font-medium text-gray-500" for="title"> Title </label>
                                     <input class="w-full p-3 mt-1 text-sm border-2 border-gray-200 rounded"
-                                        id="title" type="text" required name="title" value={property.title} onChange={handleChange}/>
+                                        id="title" type="text" required name="title" />
                                 </div>
                                 <div>
                                     <label class="block text-xs font-medium text-gray-500" for="address"> Address </label>
                                     <input class="w-full p-3 mt-1 text-sm border-2 border-gray-200 rounded"
-                                        id="address" type="text" required name="address" value={property.address} onChange={handleChange}/>
+                                        id="address" type="text" required name="address" />
                                 </div>
                                 <div>
                                     <label class="block text-xs font-medium text-gray-500" for="bedroom"> Bedrooms </label>
                                     <input class="w-full p-3 mt-1 text-sm border-2 border-gray-200 rounded"
-                                        id="bedroom" type="number" min="0" step="1" required name="bedroom" value={property.bedroom} onChange={handleChange}/>
+                                        id="bedroom" type="number" min="0" step="1" required name="bedroom" />
                                 </div>
                                 <div>
                                     <label class="block text-xs font-medium text-gray-500" for="bathroom"> Bathroom </label>
                                     <input class="w-full p-3 mt-1 text-sm border-2 border-gray-200 rounded"
-                                        id="bathroom" type="number" min="0" step="1" required name="bathroom" value={property.bathroom} onChange={handleChange}/>
+                                        id="bathroom" type="number" min="0" step="1" required name="bathroom" />
                                 </div>
                                 <div>
                                     <label class="block text-xs font-medium text-gray-500" for="price"> Price </label>
                                     <input class="w-full p-3 mt-1 text-sm border-2 border-gray-200 rounded"
-                                        id="price" type="number" min="0" step="1" required name="price" value={property.price} onChange={(e) => handleChange("price", e.target.value)}/>
+                                        id="price" type="number" min="0" step="1" required name="price" />
                                 </div>
                                 <div>
                                     <label class="block text-xs font-medium text-gray-500" for="size"> Size </label>
                                     <input class="w-full p-3 mt-1 text-sm border-2 border-gray-200 rounded"
-                                        id="size" type="number" min="0" step="1" required name="size" value={property.size} onChange={(e) => handleChange("size", e.target.value)}/>
+                                        id="size" type="number" min="0" step="1" required name="size" />
                                 </div>
                                 <div>
                                     <label class="sr-only" for="message">Description</label>
@@ -230,8 +158,6 @@ const AdminPage = () => {
                                         id="message"
                                         required
                                         name="description"
-                                        value={property.description}
-                                        onChange={(e) => handleChange("description", e.target.value)}
                                     ></textarea>
                                 </div>
 
@@ -255,25 +181,19 @@ const AdminPage = () => {
                                             type="radio"
                                             value="false"
                                             name="isForSale"
-                                            checked={property.isForSale}
-                                            onChange={(e) => handleChange("isForSale", e.target.value === "true")}
-                                            required
                                         /> Rent
                                         &nbsp;
                                         <input
                                             type="radio"
                                             value="true"
                                             name="isForSale"
-                                            checked={property.isForSale}
-                                            onChange={(e) => handleChange("isForSale", e.target.value === "true")}
-                                            required
+                                        
                                         /> Buy
                                     </div>
 
                                 </div>
                                 <div className="flex items-center justify-center">
                                     <button type="submit" className="btn btn-primary">Submit</button> &nbsp;
-                                    {isUpdate? <button type="button" className="btn btn-warning" onClick={handleDelete}>Delete</button> : <></>}
                                 </div>
                             </form>
 
