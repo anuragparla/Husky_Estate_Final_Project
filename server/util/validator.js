@@ -162,6 +162,7 @@ async function verifyPropertyDetails(req,res,next) {
     return;
   }
 
+  
   console.log(property.images);
   property.images = property.images.split(",");
   if(!property.images || property.images.length === 0) {
