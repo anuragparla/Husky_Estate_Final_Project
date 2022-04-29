@@ -18,13 +18,17 @@ const About = () => {
       class="grid grid-cols-1 lg:grid-cols-2 gap-y-8 lg:gap-x-16 lg:items-center"
     >
       <div class="max-w-lg mx-auto text-center lg:text-left lg:mx-0">
-        <h2 class="text-3xl font-bold sm:text-4xl">Find your career path</h2>
+        <h2 class="text-3xl font-bold sm:text-4xl">Find your perfect House</h2>
 
         <p class="mt-4 text-gray-600">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Aut vero
+          {/* Lorem ipsum dolor sit amet consectetur adipisicing elit. Aut vero
           aliquid sint distinctio iure ipsum cupiditate? Quis, odit assumenda?
           Deleniti quasi inventore, libero reiciendis minima aliquid tempora.
-          Obcaecati, autem.
+          Obcaecati, autem. */}
+          With Husky Estate forget about all your worries related to properties
+          and leave everything on us, wether its about buying a new property,
+          selling your property or finding new tenents for your House, we provide
+          services in all domains.
         </p>
 
         <a
