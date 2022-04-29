@@ -18,14 +18,16 @@ const Contact = () => {
     <div class="grid grid-cols-1 gap-x-16 gap-y-8 lg:grid-cols-5">
       <div class="lg:py-12 lg:col-span-2">
         <p class="max-w-xl text-lg">
-          At the same time, the fact that we are wholly owned and totally independent from manufacturer and other group
-          control gives you confidence that we will only recommend what is right for you.
+          {/* At the same time, the fact that we are wholly owned and totally independent from manufacturer and other group
+          control gives you confidence that we will only recommend what is right for you. */}
+          We not only find the perfect property for our customers but we also believe in building a long term relationship With
+          our clients that is based on the trust and satisfaction of our clients. 
         </p>
 
         <div class="mt-8">
           <a href="" class="text-2xl font-bold text-pink-600"> 0151 475 4450 </a>
 
-          <address class="mt-2 not-italic">360 Hunting, Imogeneborough, CA 58517</address>
+          <address class="mt-2 not-italic">360 Huntington Avenue, Boston, MA 02120</address>
         </div>
       </div>
 
