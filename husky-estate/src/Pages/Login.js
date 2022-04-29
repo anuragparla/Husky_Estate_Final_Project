@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import Navbar3 from "../Components/Navbar";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { validateEmail } from "../util/validator";
 import Cookies from 'universal-cookie';
 import { URL } from "../util/constants";
@@ -11,6 +11,7 @@ const LoginPage = () => {
 
     const[email, setEmail] = useState("");
     const [passsword, setPassword] = useState("");
+    let navigate = useNavigate();
 
     const handleClick = async (e) => {
         e.preventDefault();
@@ -34,7 +35,7 @@ const LoginPage = () => {
             alert("Login Successful");
             const cookies = new Cookies();
             cookies.set('auth', json.token, { path: '/' });
-            window.open("/", "_self").focus();
+            navigate("/", { replace: true })
           } else {
             alert(json.message);
           }

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import Navbar3 from "../Components/Navbar";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { validateEmail } from "../util/validator";
 import { URL } from "../util/constants";
 import Footer from "../Components/Footer";
@@ -10,6 +10,7 @@ const SignupPage = () => {
   const [confirmPassword, setConfirmPassword] = useState("");
   const [email, setEmail] = useState("");
   const [name, setName] = useState("");
+  let navigate = useNavigate();
 
   const handleClick = async (e) => {
     e.preventDefault();
@@ -43,7 +44,8 @@ const SignupPage = () => {
     const json = await res.json();
     if(json.success) {
       alert("Signup Successful");
-      window.open("/signup", "_self").focus();
+      navigate("/login", { replace: true })
+
     } else {
       alert(json.message);
     }

@@ -1,14 +1,17 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import Cookies from "universal-cookie";
 
 import "./HomeCard.css"
 
-const HomeCard = function ({ home,index }) {
+const HomeCard = function ({ home,index, isAdmin}) {
 
     const { images } = home;
     const imagesLength = images.length;
     const key = Math.random();
 
+    const getLink = () => isAdmin ? `/addProp?id=${home._id}`: `/property?id=${home._id}`;
+    
 
     return (
         <a
@@ -90,7 +93,7 @@ const HomeCard = function ({ home,index }) {
                     </div>
                     <div>
                         <Link class="flex items-center justify-between px-5 py-3 text-indigo-600 transition-colors border border-current rounded-lg hover:bg-indigo-600 group active:bg-indigo-500 focus:outline-none focus:ring"
-                            to={`/property?id=${home._id}`}>
+                            to={getLink()}>
                             <span class="font-medium transition-colors group-hover:text-white">
                                 Find out more
                             </span>

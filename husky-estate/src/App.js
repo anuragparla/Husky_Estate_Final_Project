@@ -32,7 +32,7 @@ function App() {
         <Route exact path="/login" element={<LoginPage />} />
         <Route exact path="/signup" element={<SignupPage />} />
         <Route exact path="/logout" element={<LogoutPage />} />
-        <Route exact path="/admin" element={<AdminPage />} />
+        <Route exact path="/addProp" element={<AdminPage />} />
         <Route exact path="/property" element={<ListedHome />} />
 
 

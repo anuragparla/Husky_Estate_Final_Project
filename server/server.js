@@ -1,5 +1,5 @@
 var app = require('./app');
-var port = process.env.PORT || 4000;
+var port = process.env.PORT || 8080;
 
 // const bcrypt = require('bcryptjs');
 // const {USER_TYPES} = require('./util/constants');

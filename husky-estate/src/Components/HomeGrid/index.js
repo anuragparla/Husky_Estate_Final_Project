@@ -5,7 +5,7 @@ import HomeCard from "../HomeCard";
 
 
 
-const HomeGrid = ({ properties }) => {
+const HomeGrid = ({ properties, isAdmin }) => {
 
     const PropertyAreas = () => {
         return (
@@ -31,7 +31,7 @@ const HomeGrid = ({ properties }) => {
       const getColumnsForRow = () => {
         let items = properties.map((home, index) => {
           return (
-            <HomeCard home={home} index={index}></HomeCard>
+            <HomeCard home={home} index={index} isAdmin={isAdmin}></HomeCard>
           );
         });
         return items;

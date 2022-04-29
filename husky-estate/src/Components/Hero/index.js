@@ -3,11 +3,13 @@ import { FaSearch } from "react-icons/fa";
 import { useState, useEffect, useRef } from "react";
 
 import "./Hero.css"
+import { useNavigate } from "react-router-dom";
 
 
 const Hero = () => {
   const [location, setLocation] = useState("");
   const searchRef = useRef(null);
+  let navigate = useNavigate();
 
   const handleScroll = () => {
     if (searchRef.current.getBoundingClientRect().bottom < 0) {
@@ -31,7 +33,8 @@ const Hero = () => {
       alert("No Query Given")
       return;
     }
-    window.open(`/search?q=${location}`).focus();
+    navigate(`/search?q=${location}`, { replace: true })
+
   }
 
   return  (

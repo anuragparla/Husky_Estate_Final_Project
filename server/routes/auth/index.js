@@ -25,7 +25,7 @@ router.post('/login', emailAndPasswordValid ,function(req, res) {
     
     // check if the password is valid
     var passwordIsValid = bcrypt.compareSync(req.body.password, user.password);
-    if (!passwordIsValid) return res.status(401).send({ success: false, token: null });
+    if (!passwordIsValid) return res.status(401).send({ success: false, message: "Wrong Password" });
 
     // if user is found and password is valid
     // create a token
@@ -71,7 +71,7 @@ router.get('/me', verifyToken, function(req, res, next) {
 
   User.findById(req.userId, { password: 0 }, function (err, user) {
     if (err) return res.status(500).send({ success: false, message:"There was a problem finding the user"});
-    if (!user) return res.status(404).send("No user found.");
+    if (!user) return res.status(404).send({ success: false, message:"There was a problem finding the user"});
     res.status(200).send({
       success: true,
       data: user
