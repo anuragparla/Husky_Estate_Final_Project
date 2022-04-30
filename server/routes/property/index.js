@@ -42,10 +42,12 @@ router.post("/update", onlyAdmin, verifyPropertyDetails, (req, res) => {
     });
     return;
   }
+  console.log(property._id, property.id)
   if(property._id) 
     delete property._id
-  Property.findOneAndUpdate( property.id, property, {},
+  Property.findByIdAndUpdate( property.id, property, {},
     function (err, user) {
+      console.log(user, user._id);
       if (err) { console.log(err); return res.status(500).send({ success: false, message: "There was a problem finding the Property." }); }
       res.status(200).send({ success: true });
     });

@@ -89,7 +89,7 @@ const EditAdminPage = () => {
                 return;
             } else setAccount(json.data);
 
-        } else return;
+        } else  navigate("/", {replace: true});
     }
 
 

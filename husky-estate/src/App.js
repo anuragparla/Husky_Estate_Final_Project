@@ -2,6 +2,8 @@ import React from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import About from "./Pages/About";
 import AdminPage from "./Pages/admin/AdminPage";
+
+import EnquiriesPage from "./Pages/admin/EnquiriesPage";
 import Agents from "./Pages/Agents";
 import Contact from "./Pages/Contact";
 import HomePage from "./Pages/HomePage";
@@ -35,8 +37,10 @@ function App() {
         <Route exact path="/logout" element={<LogoutPage />} />
         <Route exact path="/addProp" element={<AdminPage />} />
         <Route exact path="/editProp" element={<EditAdminPage />} />
+        <Route exact path="/enquiries" element={<EnquiriesPage />} />
+
         <Route exact path="/property" element={<ListedHome />} />
-        
+
         {/* <Route exact path="/homesForRent" element={<HomesForRent />} /> */}
       </Routes>
     </Router>

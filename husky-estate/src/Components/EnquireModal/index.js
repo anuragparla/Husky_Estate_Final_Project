@@ -14,7 +14,7 @@ const EnquireModal = ({ token, home }) => {
             return;
         }
         const data = new URLSearchParams();
-        data.set("type", type);
+        data.set("enquiryType", type);
         data.set("propertyID", home._id);
         data.set("message", message);
         let res = await fetch(`${URL}/enquiry/new`, {
@@ -26,9 +26,11 @@ const EnquireModal = ({ token, home }) => {
         })
         console.log(res);
         let json = await res.json();
+        console.log(json);
         if(json && json.success) {
             alert("Registered Enquiry");
-        } else alert("Could not register enquiry")
+        } else if(json) alert(json.message)
+        else alert("Could not register enquiry")
 
 
     }

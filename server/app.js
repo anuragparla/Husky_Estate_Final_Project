@@ -28,5 +28,9 @@ app.use('/api/auth', AuthController);
 var PropertyController = require('./routes/property');
 app.use('/api/property', PropertyController);
 
+var EnquiryController = require('./routes/enquiry');
+app.use('/api/enquiry', EnquiryController);
+
+
 
 module.exports = app;

@@ -88,7 +88,7 @@ const Navbar3 = () => {
       <PageLink to="/addProp">Add Property</PageLink>
       <PageLink to="/rent">Rent</PageLink>
       <PageLink to="/buy">Buy</PageLink>
-
+      <PageLink to="/enquiries">Enquiries</PageLink>
     </>
 
   )

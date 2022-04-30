@@ -43,7 +43,7 @@ const AdminPage = () => {
             if (!acc || !(acc.userType === "ADMIN")) {
                 navigate("/", {replace: true});
             } else setAccount(account);
-        }
+        } else  navigate("/", {replace: true});
     }
 
 
