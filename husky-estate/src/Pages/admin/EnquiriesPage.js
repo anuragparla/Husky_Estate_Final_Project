@@ -81,7 +81,7 @@ const EnquiriesPage = () => {
                                     <td>{index+1}</td>
                                     <td>{enq.userName}</td>
                                     <td>{enq.propertyID}</td>
-                                    <td>{enq.enquiryType}</td>
+                                    <td>{enq.enquiryType === 0 ? "Availability Check" : "Tour Requested"}</td>
                                     <td>{enq.message}</td>
                                 </tr>
                             ))}
