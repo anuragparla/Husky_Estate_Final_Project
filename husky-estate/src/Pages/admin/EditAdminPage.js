@@ -39,8 +39,7 @@ const EditAdminPage = () => {
         let json = await response.json();
         console.log(json);
         if(json.success) {
-            setProperty(json.data);
-            
+            setProperty(json.data);            
         } else alert("Home not found");
     }
 
@@ -120,9 +119,10 @@ const EditAdminPage = () => {
 
         data.set("images", images.join())
          
-
+        console.log(property);
         data.set("id", property._id);
         data.set("_id", property._id);
+        console.log(data.get("id"));
 
 
         let slug = "/property/update";
@@ -162,7 +162,14 @@ const EditAdminPage = () => {
 
     }
 
-    const handleChange = e => {
+    const handleChange = (e, k, v) => {
+        if(k) {
+            setProperty(property => ({
+                ...property,
+                [k]: v
+            }));    
+            return;
+        }
         const { name, value } = e.target;
         setProperty(property => ({
             ...property,
@@ -259,7 +266,7 @@ const EditAdminPage = () => {
                                             value="false"
                                             name="isForSale"
                                             checked={!property.isForSale}
-                                            onChange={handleChange}
+                                            onChange={(e) => handleChange(e,"isForSale", false)}
                                             required
                                         /> Rent
                                         &nbsp;
@@ -268,7 +275,7 @@ const EditAdminPage = () => {
                                             value="true"
                                             name="isForSale"
                                             checked={property.isForSale}
-                                            onChange={handleChange}
+                                            onChange={(e) => handleChange(e,"isForSale", true)}
                                             required
                                         /> Buy
                                     </div>
