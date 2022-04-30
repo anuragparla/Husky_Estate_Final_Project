@@ -5,7 +5,6 @@ import { validateEmail } from "../util/validator";
 import { URL } from "../util/constants";
 import Footer from "../Components/Footer";
 const SignupPage = () => {
-
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [email, setEmail] = useState("");
@@ -16,16 +15,16 @@ const SignupPage = () => {
     e.preventDefault();
 
     var letters = /^[A-Za-z]+$/;
-    if(!name && letters.match(name)) {
+    if (!name && letters.match(name)) {
       alert("Name is invalid");
       return;
     }
-    if(!password || !confirmPassword || confirmPassword !== password) {
+    if (!password || !confirmPassword || confirmPassword !== password) {
       alert("Please check passwords again");
       return;
     }
 
-    if(!validateEmail(email)) {
+    if (!validateEmail(email)) {
       alert("Email is not good");
       return;
     }
@@ -34,26 +33,20 @@ const SignupPage = () => {
       name,
       email,
       password,
-    }
+    };
 
     const res = await fetch(`${URL}/auth/register`, {
-      method:"POST",
-      body: new URLSearchParams(data)
+      method: "POST",
+      body: new URLSearchParams(data),
     });
     console.log(res);
     const json = await res.json();
-    if(json.success) {
+    if (json.success) {
       alert("Signup Successful");
-      navigate("/login", { replace: true })
-
+      navigate("/login", { replace: true });
     } else {
       alert(json.message);
     }
-
-
-
-
-
   };
 
   return (
@@ -62,18 +55,21 @@ const SignupPage = () => {
 
       <div class="max-w-screen-xl px-4 py-16 mx-auto sm:px-6 lg:px-8">
         <div class="max-w-lg mx-auto">
-          <h1 class="text-2xl font-bold text-center text-indigo-600 sm:text-3xl">Get started today</h1>
+          <h1 class="text-2xl font-bold text-center text-indigo-600 sm:text-3xl">
+            Get started today
+          </h1>
 
-          <p class="max-w-md mx-auto mt-4 text-center text-gray-500">
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Obcaecati sunt dolores deleniti inventore quaerat
-            mollitia?
-          </p>
-
-          <form action="" class="p-8 mt-6 mb-0 space-y-4 rounded-lg shadow-2xl" onSubmit={handleClick}>
+          <form
+            action=""
+            class="p-8 mt-6 mb-0 space-y-4 rounded-lg shadow-2xl"
+            onSubmit={handleClick}
+          >
             <p class="text-lg font-medium">Sign in to your account</p>
 
             <div>
-              <label for="name" class="text-sm font-medium">Name</label>
+              <label for="name" class="text-sm font-medium">
+                Name
+              </label>
 
               <div class="relative mt-1">
                 <input
@@ -85,13 +81,13 @@ const SignupPage = () => {
                   placeholder="Jack Dorsey"
                   required
                 />
-
               </div>
             </div>
 
-
             <div>
-              <label for="email" class="text-sm font-medium">Email</label>
+              <label for="email" class="text-sm font-medium">
+                Email
+              </label>
 
               <div class="relative mt-1">
                 <input
@@ -99,7 +95,6 @@ const SignupPage = () => {
                   id="email"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
-
                   class="w-full p-4 pr-12 text-sm border-gray-200 rounded-lg shadow-sm"
                   placeholder="elon@isagod.xyz"
                   required
@@ -125,7 +120,9 @@ const SignupPage = () => {
             </div>
 
             <div>
-              <label for="password" class="text-sm font-medium">Password</label>
+              <label for="password" class="text-sm font-medium">
+                Password
+              </label>
 
               <div class="relative mt-1">
                 <input
@@ -141,7 +138,9 @@ const SignupPage = () => {
             </div>
 
             <div>
-              <label for="cpassword" class="text-sm font-medium">Confirm Password</label>
+              <label for="cpassword" class="text-sm font-medium">
+                Confirm Password
+              </label>
 
               <div class="relative mt-1">
                 <input
@@ -153,30 +152,28 @@ const SignupPage = () => {
                   placeholder="sshhh again...."
                   required
                 />
-
               </div>
             </div>
 
-
-            <button type="submit" class="block w-full px-5 py-3 text-sm font-medium text-white bg-indigo-600 rounded-lg" 
-              >
+            <button
+              type="submit"
+              class="block w-full px-5 py-3 text-sm font-medium text-white bg-indigo-600 rounded-lg"
+            >
               Sign up
             </button>
 
             <p class="text-sm text-center text-gray-500">
               Already have an account?
-              <Link class="underline" to="/login">Login</Link>
+              <Link class="underline" to="/login">
+                Login
+              </Link>
             </p>
           </form>
         </div>
       </div>
       <Footer></Footer>
-
-
     </>
-  )
-}
+  );
+};
 
-
-
-export default SignupPage
+export default SignupPage;
