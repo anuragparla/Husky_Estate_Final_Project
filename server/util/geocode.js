@@ -3,6 +3,7 @@ const fetch = require('node-fetch');
 
 const getLatLng = async (address) => {
 
+    address = encodeURIComponent(address);
     const response = await fetch(`https://maps.googleapis.com/maps/api/geocode/json?address=${address}&key=${process.env['GEOCODING_API']}`);
 
     let json = await response.json();

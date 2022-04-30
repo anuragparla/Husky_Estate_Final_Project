@@ -85,6 +85,7 @@ const AdminPage = () => {
         let json = await res.json();
         if (json.success) {
             alert("Property Added");
+            navigate("/addProp", { replace: true})
         } else alert(json.message);
 
     }
@@ -187,7 +188,7 @@ const AdminPage = () => {
                                             type="radio"
                                             value="true"
                                             name="isForSale"
-                                        
+                                            checked={true}
                                         /> Buy
                                     </div>
 

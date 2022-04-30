@@ -31,13 +31,13 @@ const HomeGrid = ({ properties, isAdmin }) => {
       const getColumnsForRow = () => {
         let items = properties.map((home, index) => {
           return (
-            <HomeCard home={home} index={index} isAdmin={isAdmin}></HomeCard>
+            <HomeCard home={home} index={index} isAdmin={isAdmin} key={index}></HomeCard>
           );
         });
         return items;
       };
       
-
+      console.log("Created");
     return (
         <div>
             {properties.length === 0 ? <EmptyArea></EmptyArea> : <PropertyAreas></PropertyAreas>}

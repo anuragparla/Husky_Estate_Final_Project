@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import Cookies from "universal-cookie";
 
@@ -7,27 +7,33 @@ import "./HomeCard.css"
 const HomeCard = function ({ home,index, isAdmin}) {
 
     const { images } = home;
+    const [frontImage, setFrontImage] = useState(0);
+
     const imagesLength = images.length;
-    const key = Math.random();
+    // const key = Math.random();
 
     const getLink = () => isAdmin ? `/editProp?id=${home._id}`: `/property?id=${home._id}`;
-    
+    const setImage = (inc) => {
+        let img = frontImage + inc;
+        if(img < 0) {
+            setFrontImage(imagesLength - 1)
+        } else if(img >= imagesLength) {
+            setFrontImage(0);
+        } else setFrontImage(img);
+    }
 
     return (
-        <a
-            href=""
+        <div
             class="block p-4 rounded-lg shadow-sm shadow-indigo-100"
         >
             <div class="carousel w-full">
-                {images.map((image, index) => (
-                    <div id={`slide${index}${key}`} class="carousel-item relative w-full">
-                        <img src={image} class="object-cover w-full h-56 rounded-md" /> 
+                    <div class="carousel-item relative w-full">
+                        <img src={images[frontImage]} class="object-cover w-full h-56 rounded-md" /> 
                         <div class="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
-                            <a href={`#slide${index === 0? imagesLength-1: index-1}${key}`} class="btn btn-circle disabled-link">❮</a>
-                            <a href={`#slide${index+1 === imagesLength ? 0: index+1}${key}`} class="btn btn-circle disabled-link">❯</a>
+                            <span class="btn btn-circle disabled-link" onClick={() => setImage(-1)}>❮</span>
+                            <span class="btn btn-circle disabled-link" onClick={() => setImage(+1)}>❯</span>
                         </div>
                     </div>
-                ))}
             </div>
 
             <div class="mt-2">
@@ -44,13 +50,24 @@ const HomeCard = function ({ home,index, isAdmin}) {
 
                     <div>
                         <dt class="sr-only">
-                            Address
+                            Title
                         </dt>
 
                         <dd class="font-medium">
+                            {home.title}
+                        </dd>
+                    </div>
+
+                    <div>
+                        <dt class="sr-only">
+                            Address
+                        </dt>
+
+                        <dd class="text-sm font-light">
                             {home.address}
                         </dd>
                     </div>
+
                 </dl>
 
                 <dl class="flex items-center mt-6 space-x-8 text-xs">
@@ -95,7 +112,7 @@ const HomeCard = function ({ home,index, isAdmin}) {
                         <Link class="flex items-center justify-between px-5 py-3 text-indigo-600 transition-colors border border-current rounded-lg hover:bg-indigo-600 group active:bg-indigo-500 focus:outline-none focus:ring"
                             to={getLink()}>
                             <span class="font-medium transition-colors group-hover:text-white">
-                                Find out more
+                                {isAdmin ? "Edit":"Find out More"}
                             </span>
 
                             <span class="flex-shrink-0 p-2 ml-4 bg-white border border-indigo-600 rounded-full group-active:border-indigo-500">
@@ -110,7 +127,7 @@ const HomeCard = function ({ home,index, isAdmin}) {
                 </dl>
             </div>
 
-        </a>
+        </div>
     );
 };
 

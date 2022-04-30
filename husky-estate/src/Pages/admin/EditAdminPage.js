@@ -114,7 +114,6 @@ const EditAdminPage = () => {
             alert("No Files Uploaded");
             return;
         }
-        alert("Here");
 
 
         const data = new URLSearchParams(property);
@@ -123,6 +122,8 @@ const EditAdminPage = () => {
          
 
         data.set("id", property._id);
+        data.set("_id", property._id);
+
 
         let slug = "/property/update";
 
@@ -145,7 +146,6 @@ const EditAdminPage = () => {
 
     const handleDelete = async (e) => {
         e.preventDefault();
-        alert("Click")
         let res = await fetch(`${URL}/property/delete/${property._id}`, {
             method: "DELETE",
             headers: {

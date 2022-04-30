@@ -49,30 +49,35 @@ const HomeDetailts = ({ home }) => {
                 <div class="lg:top-0 lg:sticky">
                     <form class="space-y-4 lg:pt-8">
                         <fieldset>
-                            <legend class="text-lg font-bold">
-                                Bedrooms: {home.bedroom}
+                            <legend class="text-lg">
+                                <span> Bedrooms</span> : <span className="font-bold">{home.bedroom}</span>
                             </legend>
                         </fieldset>
 
                         <fieldset>
-                            <legend class="text-lg font-bold">
-                                Bathrooms: {home.bathroom}
+                        <legend class="text-lg">
+                                <span> Bathroom</span> : <span className="font-bold">{home.bathroom}</span>
                             </legend>
                         </fieldset>
+                        <fieldset>
+                        <legend class="text-lg">
+                                <span> Size</span> : <span className="font-bold">{home.size} Sq Ft.</span>
+                            </legend>
+                            </fieldset>
 
                 
                         <div>
-                            <p class="text-xl font-bold">
-                                {home.price}
-                            </p>
+                        <legend class="text-lg">
+                                <span> Price</span> : <span className="font-bold">{home.price}</span>
+                            </legend>
                         </div>
 
 
                         <button
                             type="button"
-                            class="w-full px-6 py-3 text-sm font-bold tracking-wide uppercase bg-gray-100 border border-gray-300 rounded"
+                            class="w-full px-6 py-3 text-sm font-bold tracking-wide uppercase bg-blue-100 border border-white-300 rounded"
                         >
-                            Notify when on sale
+                            Enquire
                         </button>
                     </form>
                 </div>
