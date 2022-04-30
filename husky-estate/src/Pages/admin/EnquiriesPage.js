@@ -79,7 +79,7 @@ const EnquiriesPage = () => {
                             {enquiry.map((enq, index) => (
                                 <tr>
                                     <td>{index+1}</td>
-                                    <td>{enq.userID}</td>
+                                    <td>{enq.userName}</td>
                                     <td>{enq.propertyID}</td>
                                     <td>{enq.enquiryType}</td>
                                     <td>{enq.message}</td>

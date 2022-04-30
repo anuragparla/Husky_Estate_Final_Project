@@ -35,7 +35,7 @@ const Contact = () => {
                 </div>
 
                 <div class="p-8 bg-white rounded-lg shadow-lg lg:p-12 lg:col-span-3">
-                  <form action="" class="space-y-4">
+                  <form action="#" class="space-y-4">
                     <div>
                       <label class="sr-only" for="name">
                         Name
@@ -91,7 +91,7 @@ const Contact = () => {
                         type="submit"
                         class="inline-flex items-center justify-center w-full px-5 py-3 text-white bg-black rounded-lg sm:w-auto"
                       >
-                        <span class="font-medium"> Send Enquiry </span>
+                        <span class="font-medium"> Contact </span>
 
                         <svg
                           xmlns="http://www.w3.org/2000/svg"
